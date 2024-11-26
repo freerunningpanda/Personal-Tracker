@@ -1,16 +1,4 @@
-import 'package:get_it/get_it.dart';
-import 'package:tracker/core/data/datasources/local/local_datasource.dart';
-import 'package:tracker/core/data/datasources/local/local_datasource_impl.dart';
-import 'package:tracker/core/database/app_database.dart';
-import 'package:tracker/core/presentation/router/app_router.dart';
-import 'package:tracker/features/transaction/data/repositories/transaction_repository_impl.dart';
-import 'package:tracker/features/transaction/domain/repositories/transaction_repository.dart';
-import 'package:tracker/features/transaction/domain/usecases/create_transaction.dart';
-import 'package:tracker/features/transaction/domain/usecases/delete_transaction.dart';
-import 'package:tracker/features/transaction/domain/usecases/get_transactions.dart';
-import 'package:tracker/features/transaction/domain/usecases/update_transaction.dart';
-import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc.dart';
-import 'package:tracker/features/transaction/presentation/cubit/form_cubit.dart';
+part of '../core.dart';
 
 /// [GetIt] is a service locator.
 final sl = GetIt.instance;
@@ -25,8 +13,17 @@ Future<void> initDependencyInjection() async {
       () => LocalDatasourceImpl(sl()),
     );
 
+  // Theme init dependency.
+  _initTheme();
+
   // Transactions init dependency.
   _initTransactions();
+}
+
+void _initTheme() {
+  sl
+    ..registerLazySingleton<AppTheme>(() => AppTheme(sl()))
+    ..registerLazySingleton<AppColorsLight>(AppColorsLight.new);
 }
 
 void _initTransactions() {

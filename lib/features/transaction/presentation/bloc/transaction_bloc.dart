@@ -44,9 +44,15 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     final result = await _getTransactions.call(NoParams());
 
     result.fold(
-      onSuccess: (transactions) => emit(
-        TransactionLoadedState(transactions.data ?? []),
-      ),
+      onSuccess: (transactions) {
+        emit(
+          TransactionLoadedState(transactions.data ?? []),
+        );
+
+        if (transactions.data?.isEmpty ?? true) {
+          emit(const TransactionInitialState());
+        }
+      },
       onFailure: (failure) => emit(
         TransactionErrorState(failure.message),
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tracker/core/di/injection_container.dart';
+import 'package:tracker/core/core.dart';
 import 'package:tracker/core/presentation/router/app_router.dart';
 import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc.dart';
 import 'package:tracker/features/transaction/presentation/cubit/form_cubit.dart';
