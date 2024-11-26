@@ -5,6 +5,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:tracker/core/constants/app_constants.dart';
 import 'package:tracker/core/enums/transaction_category.dart';
 import 'package:tracker/core/enums/transaction_type.dart';
+import 'package:tracker/core/presentation/theme/app_theme.dart';
+import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 import 'package:tracker/features/transaction/domain/entities/transaction.dart';
 import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc.dart';
 import 'package:tracker/features/transaction/presentation/cubit/form_cubit.dart'
@@ -99,6 +101,7 @@ class TransactionDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormBuilderState>();
+    final theme = context.theme;
 
     return FormBuilder(
       key: formKey,
@@ -108,6 +111,9 @@ class TransactionDialog extends StatelessWidget {
             transaction != null
                 ? 'Update a transaction'
                 : 'Create a transaction',
+            style: theme.primaryTextTheme.headlineMedium?.copyWith(
+              color: theme.appColors.textColors.mainColor,
+            ),
           ),
           content: TransactionFormContent(
             formKey: formKey,
@@ -118,7 +124,12 @@ class TransactionDialog extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: () => context.maybePop(),
-              child: const Text('Cancel'),
+              child: Text(
+                'Cancel',
+                style: theme.primaryTextTheme.bodyMedium?.copyWith(
+                  color: theme.appColors.textColors.mainColor,
+                ),
+              ),
             ),
             Visibility(
               visible: state.isFormValid,
@@ -126,6 +137,10 @@ class TransactionDialog extends StatelessWidget {
                 onPressed: null,
                 child: Text(
                   !isUpdate ? 'Create' : 'Update',
+                  style: theme.primaryTextTheme.bodyMedium?.copyWith(
+                    color:
+                        theme.appColors.textColors.mainColor.withOpacity(0.4),
+                  ),
                 ),
               ),
               child: TextButton(

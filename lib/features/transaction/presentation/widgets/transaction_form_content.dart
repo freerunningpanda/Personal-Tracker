@@ -41,12 +41,18 @@ class TransactionFormContent extends StatelessWidget {
     final now = DateTime.now();
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         FormBuilderTextField(
           initialValue: transaction?.title,
           focusNode: titleFocusNode,
           name: AppConstants.titleField,
-          decoration: const InputDecoration(labelText: 'Title'),
+          decoration: const InputDecoration(
+            labelText: 'Title',
+            suffixIcon: Icon(
+              Icons.title,
+            ),
+          ),
           textInputAction: TextInputAction.next,
           onChanged: (value) {
             localCubit.checkFormStatus(
@@ -69,30 +75,39 @@ class TransactionFormContent extends StatelessWidget {
             );
             valueFocusNode.requestFocus();
           },
-          decoration: const InputDecoration(labelText: 'Value'),
+          decoration: const InputDecoration(
+            labelText: 'Value',
+            suffixIcon: Icon(Icons.attach_money),
+          ),
           validator: (value) =>
               value == null || value.isEmpty ? 'Please enter a value' : null,
         ),
         FormBuilderDateTimePicker(
-          name: 'dateTime',
+          name: AppConstants.dateTimeField,
           initialValue:
               transaction?.updatedAt ?? dateFormat.tryParse(now.toString()),
           inputType: InputType.date,
           format: dateFormat,
-          decoration: const InputDecoration(labelText: 'Date'),
+          decoration: const InputDecoration(
+            labelText: 'Date',
+            suffixIcon: Icon(Icons.calendar_today),
+          ),
         ),
-        DropdownButton<TransactionType>(
-          value: type,
-          items: TransactionType.values
-              .map(
-                (type) => DropdownMenuItem(
-                  value: type,
-                  child: Text(type.toString().split('.').last),
-                ),
-              )
-              .toList(),
-          onChanged: (type) => localCubit.setType(
-            type: type,
+        Padding(
+          padding: const EdgeInsets.only(top: AppConstants.commonSize16),
+          child: DropdownButton<TransactionType>(
+            value: type,
+            items: TransactionType.values
+                .map(
+                  (type) => DropdownMenuItem(
+                    value: type,
+                    child: Text(type.toString().split('.').last),
+                  ),
+                )
+                .toList(),
+            onChanged: (type) => localCubit.setType(
+              type: type,
+            ),
           ),
         ),
         DropdownButton<TransactionCategory>(

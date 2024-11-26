@@ -8,6 +8,9 @@ class AppConstants {
   /// [valueField] is the amount of the transaction.
   static const valueField = 'value';
 
+  /// [dateTimeField] is the date and time of the transaction.
+  static const dateTimeField = 'dateTime';
+
   /// [commonSize24] is the common size used in the app.
   static const commonSize24 = 24.0;
 
