@@ -7,4 +7,16 @@ class AppConstants {
 
   /// [valueField] is the amount of the transaction.
   static const valueField = 'value';
+
+  /// [commonSize24] is the common size used in the app.
+  static const commonSize24 = 24.0;
+
+  /// [commonSize16] is the common size used in the app.
+  static const commonSize16 = 16.0;
+
+  /// [commonSize12] is the common size used in the app.
+  static const commonSize12 = 12.0;
+
+  /// [commonSize4] is the common size used in the app.
+  static const commonSize4 = 4.0;
 }
