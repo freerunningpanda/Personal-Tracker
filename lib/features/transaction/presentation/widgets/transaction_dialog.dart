@@ -42,7 +42,8 @@ class TransactionDialog extends StatelessWidget {
     final value =
         formKey.currentState?.value[AppConstants.valueField] as String?;
 
-    final createdAt = formKey.currentState?.value['dateTime'] as DateTime?;
+    final createdAt =
+        formKey.currentState?.value[AppConstants.dateTimeField] as DateTime?;
 
     final parsedValue = double.tryParse(value ?? '');
 
@@ -75,7 +76,8 @@ class TransactionDialog extends StatelessWidget {
     final value =
         formKey.currentState?.value[AppConstants.valueField] as String?;
 
-    final updatedAt = formKey.currentState?.value['dateTime'] as DateTime?;
+    final updatedAt =
+        formKey.currentState?.value[AppConstants.dateTimeField] as DateTime?;
 
     final parsedValue = double.tryParse(value ?? '');
 
@@ -109,8 +111,8 @@ class TransactionDialog extends StatelessWidget {
         builder: (_, state) => AlertDialog(
           title: Text(
             transaction != null
-                ? 'Update a transaction'
-                : 'Create a transaction',
+                ? context.tr.updateATransaction
+                : context.tr.createATransaction,
             style: theme.primaryTextTheme.headlineMedium?.copyWith(
               color: theme.appColors.textColors.mainColor,
             ),
@@ -125,7 +127,7 @@ class TransactionDialog extends StatelessWidget {
             TextButton(
               onPressed: () => context.maybePop(),
               child: Text(
-                'Cancel',
+                MaterialLocalizations.of(context).cancelButtonLabel,
                 style: theme.primaryTextTheme.bodyMedium?.copyWith(
                   color: theme.appColors.textColors.mainColor,
                 ),
@@ -136,7 +138,7 @@ class TransactionDialog extends StatelessWidget {
               replacement: TextButton(
                 onPressed: null,
                 child: Text(
-                  !isUpdate ? 'Create' : 'Update',
+                  !isUpdate ? context.tr.create : context.tr.update,
                   style: theme.primaryTextTheme.bodyMedium?.copyWith(
                     color:
                         theme.appColors.textColors.mainColor.withOpacity(0.4),
@@ -158,7 +160,12 @@ class TransactionDialog extends StatelessWidget {
                         category: state.category,
                         type: state.type,
                       ),
-                child: Text(!isUpdate ? 'Create' : 'Update'),
+                child: Text(
+                  !isUpdate ? context.tr.create : context.tr.update,
+                  style: theme.primaryTextTheme.bodyMedium?.copyWith(
+                    color: theme.appColors.textColors.mainColor,
+                  ),
+                ),
               ),
             ),
           ],

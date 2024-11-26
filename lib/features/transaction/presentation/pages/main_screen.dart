@@ -38,7 +38,10 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
-    const tabTitleList = ['Transactions', 'Analytics'];
+    final tabTitleList = [
+      context.tr.transactions,
+      context.tr.analytics,
+    ];
 
     return Scaffold(
       body: SafeArea(
@@ -59,15 +62,15 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                             children: [
                               Center(
                                 child: Text(
-                                  'No transactions yet',
+                                  context.tr.noTransactionsYet,
                                   style: TextStyle(
                                     color: theme
                                         .appColors.textColors.secondaryColor,
                                   ),
                                 ),
                               ),
-                              const Center(
-                                child: Text('Analytics'),
+                              Center(
+                                child: Text(context.tr.analytics),
                               ),
                             ],
                           ),
@@ -86,8 +89,8 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                               TransactionsView(
                                 transactions: state.transactions,
                               ),
-                              const Center(
-                                child: Text('Analytics'),
+                              Center(
+                                child: Text(context.tr.analytics),
                               ),
                             ],
                           ),

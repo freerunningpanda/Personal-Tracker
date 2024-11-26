@@ -40,91 +40,93 @@ class TransactionFormContent extends StatelessWidget {
     final dateFormat = DateTimeHelper.dateFormat;
     final now = DateTime.now();
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        FormBuilderTextField(
-          initialValue: transaction?.title,
-          focusNode: titleFocusNode,
-          name: AppConstants.titleField,
-          decoration: const InputDecoration(
-            labelText: 'Title',
-            suffixIcon: Icon(
-              Icons.title,
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          FormBuilderTextField(
+            initialValue: transaction?.title,
+            focusNode: titleFocusNode,
+            name: AppConstants.titleField,
+            decoration: const InputDecoration(
+              labelText: 'Title',
+              suffixIcon: Icon(
+                Icons.title,
+              ),
+            ),
+            textInputAction: TextInputAction.next,
+            onChanged: (value) {
+              localCubit.checkFormStatus(
+                isFormValid: formKey.currentState?.validate() ?? false,
+              );
+              titleFocusNode.requestFocus();
+            },
+            onSubmitted: (_) => valueFocusNode.requestFocus(),
+            validator: (value) =>
+                value == null || value.isEmpty ? 'Please enter a title' : null,
+          ),
+          FormBuilderTextField(
+            initialValue: transaction?.value.toString(),
+            name: AppConstants.valueField,
+            keyboardType: TextInputType.number,
+            focusNode: valueFocusNode,
+            onChanged: (value) {
+              localCubit.checkFormStatus(
+                isFormValid: formKey.currentState?.validate() ?? false,
+              );
+              valueFocusNode.requestFocus();
+            },
+            decoration: const InputDecoration(
+              labelText: 'Value',
+              suffixIcon: Icon(Icons.attach_money),
+            ),
+            validator: (value) =>
+                value == null || value.isEmpty ? 'Please enter a value' : null,
+          ),
+          FormBuilderDateTimePicker(
+            name: AppConstants.dateTimeField,
+            initialValue:
+                transaction?.updatedAt ?? dateFormat.tryParse(now.toString()),
+            inputType: InputType.date,
+            format: dateFormat,
+            decoration: const InputDecoration(
+              labelText: 'Date',
+              suffixIcon: Icon(Icons.calendar_today),
             ),
           ),
-          textInputAction: TextInputAction.next,
-          onChanged: (value) {
-            localCubit.checkFormStatus(
-              isFormValid: formKey.currentState?.validate() ?? false,
-            );
-            titleFocusNode.requestFocus();
-          },
-          onSubmitted: (_) => valueFocusNode.requestFocus(),
-          validator: (value) =>
-              value == null || value.isEmpty ? 'Please enter a title' : null,
-        ),
-        FormBuilderTextField(
-          initialValue: transaction?.value.toString(),
-          name: AppConstants.valueField,
-          keyboardType: TextInputType.number,
-          focusNode: valueFocusNode,
-          onChanged: (value) {
-            localCubit.checkFormStatus(
-              isFormValid: formKey.currentState?.validate() ?? false,
-            );
-            valueFocusNode.requestFocus();
-          },
-          decoration: const InputDecoration(
-            labelText: 'Value',
-            suffixIcon: Icon(Icons.attach_money),
+          Padding(
+            padding: const EdgeInsets.only(top: AppConstants.commonSize16),
+            child: DropdownButton<TransactionType>(
+              value: type,
+              items: TransactionType.values
+                  .map(
+                    (type) => DropdownMenuItem(
+                      value: type,
+                      child: Text(type.toString().split('.').last),
+                    ),
+                  )
+                  .toList(),
+              onChanged: (type) => localCubit.setType(
+                type: type,
+              ),
+            ),
           ),
-          validator: (value) =>
-              value == null || value.isEmpty ? 'Please enter a value' : null,
-        ),
-        FormBuilderDateTimePicker(
-          name: AppConstants.dateTimeField,
-          initialValue:
-              transaction?.updatedAt ?? dateFormat.tryParse(now.toString()),
-          inputType: InputType.date,
-          format: dateFormat,
-          decoration: const InputDecoration(
-            labelText: 'Date',
-            suffixIcon: Icon(Icons.calendar_today),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: AppConstants.commonSize16),
-          child: DropdownButton<TransactionType>(
-            value: type,
-            items: TransactionType.values
+          DropdownButton<TransactionCategory>(
+            value: category,
+            items: TransactionCategory.values
                 .map(
-                  (type) => DropdownMenuItem(
-                    value: type,
-                    child: Text(type.toString().split('.').last),
+                  (category) => DropdownMenuItem(
+                    value: category,
+                    child: Text(category.toString().split('.').last),
                   ),
                 )
                 .toList(),
-            onChanged: (type) => localCubit.setType(
-              type: type,
+            onChanged: (category) => localCubit.setCategory(
+              category: category,
             ),
           ),
-        ),
-        DropdownButton<TransactionCategory>(
-          value: category,
-          items: TransactionCategory.values
-              .map(
-                (category) => DropdownMenuItem(
-                  value: category,
-                  child: Text(category.toString().split('.').last),
-                ),
-              )
-              .toList(),
-          onChanged: (category) => localCubit.setCategory(
-            category: category,
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

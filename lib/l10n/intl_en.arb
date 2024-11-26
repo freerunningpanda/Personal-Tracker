@@ -1,0 +1,38 @@
+{
+  "@@locale": "en",
+  "transactions": "Transactions",
+  "@transactions": {
+    "description": "The title of the transactions page",
+    "type": "text"
+  },
+  "analytics": "Analytics",
+  "@analytics": {
+    "description": "The title of the analytics page",
+    "type": "text"
+  },
+  "noTransactionsYet": "No transactions yet",
+  "@noTransactionsYet": {
+    "description": "The message displayed when there are no transactions",
+    "type": "text"
+  },
+  "updateATransaction": "Update a transaction",
+  "@updateATransaction": {
+    "description": "The title of the update transaction page",
+    "type": "text"
+  },
+  "createATransaction": "Create a transaction",
+  "@createATransaction": {
+    "description": "The title of the create transaction page",
+    "type": "text"
+  },
+  "create": "Create",
+  "@create": {
+    "description": "The text of the create button",
+    "type": "text"
+  },
+  "update": "Update",
+  "@update": {
+    "description": "The text of the update button",
+    "type": "text"
+  }
+}

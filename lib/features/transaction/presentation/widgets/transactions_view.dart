@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tracker/core/constants/app_constants.dart';
 import 'package:tracker/core/helpers/date_time_helper.dart';
 import 'package:tracker/core/presentation/theme/app_theme.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
@@ -34,14 +35,16 @@ class TransactionsView extends StatelessWidget {
         return Dismissible(
           direction: DismissDirection.endToStart,
           key: UniqueKey(),
-          onDismissed: (_) => context.read<TransactionBloc>().add(
-                DeleteTransactionEvent(
-                  transaction.id!,
-                ),
-              ),
+          onDismissed: transaction.id != null
+              ? (_) => context.read<TransactionBloc>().add(
+                    DeleteTransactionEvent(
+                      transaction.id!,
+                    ),
+                  )
+              : null,
           background: Container(
             padding: const EdgeInsets.symmetric(
-              horizontal: 24,
+              horizontal: AppConstants.commonSize24,
             ),
             alignment: Alignment.centerRight,
             child: Icon(
