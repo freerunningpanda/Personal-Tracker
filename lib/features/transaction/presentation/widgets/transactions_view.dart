@@ -6,6 +6,7 @@ import 'package:tracker/core/presentation/theme/app_theme.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 import 'package:tracker/features/transaction/domain/entities/transaction.dart';
 import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc.dart';
+import 'package:tracker/features/transaction/presentation/cubit/form_cubit.dart';
 import 'package:tracker/features/transaction/presentation/widgets/transaction_dialog.dart';
 
 /// [TransactionsView] is a class.
@@ -19,6 +20,21 @@ class TransactionsView extends StatelessWidget {
 
   /// [transactions] is the list of transactions.
   final List<Transaction> transactions;
+
+  void Function() _showUpdateDialog(
+    BuildContext context, {
+    required Transaction transaction,
+  }) =>
+      () {
+        context.read<FormCubit>().validateForm(isFormValid: true);
+        showDialog<TransactionDialog>(
+          context: context,
+          builder: (_) => TransactionDialog(
+            transaction: transaction,
+            isUpdate: true,
+          ),
+        );
+      };
 
   @override
   Widget build(BuildContext context) {
@@ -77,13 +93,10 @@ class TransactionsView extends StatelessWidget {
                 ],
               ),
               trailing: InkWell(
-                onTap: () => transaction.id != null
-                    ? showDialog<TransactionDialog>(
-                        context: context,
-                        builder: (_) => TransactionDialog(
-                          transaction: transaction,
-                          isUpdate: true,
-                        ),
+                onTap: transaction.id != null
+                    ? _showUpdateDialog(
+                        context,
+                        transaction: transaction,
                       )
                     : null,
                 child: const Icon(Icons.edit),

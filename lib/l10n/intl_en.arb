@@ -20,7 +20,7 @@
     "description": "The title of the update transaction page",
     "type": "text"
   },
-  "createATransaction": "Create a transaction",
+  "createATransaction": "Add a transaction",
   "@createATransaction": {
     "description": "The title of the create transaction page",
     "type": "text"
@@ -33,6 +33,31 @@
   "update": "Update",
   "@update": {
     "description": "The text of the update button",
+    "type": "text"
+  },
+  "value": "Value",
+  "@value": {
+    "description": "The label of the value input",
+    "type": "text"
+  },
+  "pleaseEnterAValue": "Please enter a value",
+  "@pleaseEnterAValue": {
+    "description": "The message displayed when the value input is empty",
+    "type": "text"
+  },
+  "date": "Date",
+  "@date": {
+    "description": "The label of the date input",
+    "type": "text"
+  },
+  "title": "Title",
+  "@title": {
+    "description": "The label of the title input",
+    "type": "text"
+  },
+  "pleaseEnterATitle": "Please enter a title",
+  "@pleaseEnterATitle": {
+    "description": "The message displayed when the title input is empty",
     "type": "text"
   }
 }

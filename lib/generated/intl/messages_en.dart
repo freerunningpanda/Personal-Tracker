@@ -25,12 +25,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "analytics": MessageLookupByLibrary.simpleMessage("Analytics"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "createATransaction":
-            MessageLookupByLibrary.simpleMessage("Create a transaction"),
+            MessageLookupByLibrary.simpleMessage("Add a transaction"),
+        "date": MessageLookupByLibrary.simpleMessage("Date"),
         "noTransactionsYet":
             MessageLookupByLibrary.simpleMessage("No transactions yet"),
+        "pleaseEnterATitle":
+            MessageLookupByLibrary.simpleMessage("Please enter a title"),
+        "pleaseEnterAValue":
+            MessageLookupByLibrary.simpleMessage("Please enter a value"),
+        "title": MessageLookupByLibrary.simpleMessage("Title"),
         "transactions": MessageLookupByLibrary.simpleMessage("Transactions"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "updateATransaction":
-            MessageLookupByLibrary.simpleMessage("Update a transaction")
+            MessageLookupByLibrary.simpleMessage("Update a transaction"),
+        "value": MessageLookupByLibrary.simpleMessage("Value")
       };
 }

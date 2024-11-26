@@ -19,8 +19,8 @@ class FormCubit extends Cubit<FormState> {
           ),
         );
 
-  /// [checkFormStatus] method is used to check the status of the form.
-  void checkFormStatus({required bool isFormValid}) {
+  /// [validateForm] method is used to validate the form.
+  void validateForm({required bool isFormValid}) {
     emit(
       state.copyWith(isFormValid: isFormValid),
     );

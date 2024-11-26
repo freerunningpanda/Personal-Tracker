@@ -90,10 +90,10 @@ class S {
     );
   }
 
-  /// `Create a transaction`
+  /// `Add a transaction`
   String get createATransaction {
     return Intl.message(
-      'Create a transaction',
+      'Add a transaction',
       name: 'createATransaction',
       desc: 'The title of the create transaction page',
       args: [],
@@ -116,6 +116,56 @@ class S {
       'Update',
       name: 'update',
       desc: 'The text of the update button',
+      args: [],
+    );
+  }
+
+  /// `Value`
+  String get value {
+    return Intl.message(
+      'Value',
+      name: 'value',
+      desc: 'The label of the value input',
+      args: [],
+    );
+  }
+
+  /// `Please enter a value`
+  String get pleaseEnterAValue {
+    return Intl.message(
+      'Please enter a value',
+      name: 'pleaseEnterAValue',
+      desc: 'The message displayed when the value input is empty',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get date {
+    return Intl.message(
+      'Date',
+      name: 'date',
+      desc: 'The label of the date input',
+      args: [],
+    );
+  }
+
+  /// `Title`
+  String get title {
+    return Intl.message(
+      'Title',
+      name: 'title',
+      desc: 'The label of the title input',
+      args: [],
+    );
+  }
+
+  /// `Please enter a title`
+  String get pleaseEnterATitle {
+    return Intl.message(
+      'Please enter a title',
+      name: 'pleaseEnterATitle',
+      desc: 'The message displayed when the title input is empty',
       args: [],
     );
   }

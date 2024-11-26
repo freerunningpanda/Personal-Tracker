@@ -60,6 +60,10 @@ class TransactionDialog extends StatelessWidget {
         ),
       )
       ..maybePop();
+
+    context.read<cubit.FormCubit>().validateForm(
+          isFormValid: false,
+        );
   }
 
   void _updateTransaction(
@@ -98,6 +102,10 @@ class TransactionDialog extends StatelessWidget {
         ),
       )
       ..maybePop();
+
+    context.read<cubit.FormCubit>().validateForm(
+          isFormValid: false,
+        );
   }
 
   @override

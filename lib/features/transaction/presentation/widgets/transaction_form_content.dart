@@ -5,6 +5,7 @@ import 'package:tracker/core/constants/app_constants.dart';
 import 'package:tracker/core/enums/transaction_category.dart';
 import 'package:tracker/core/enums/transaction_type.dart';
 import 'package:tracker/core/helpers/date_time_helper.dart';
+import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 import 'package:tracker/features/transaction/domain/entities/transaction.dart';
 import 'package:tracker/features/transaction/presentation/cubit/form_cubit.dart';
 
@@ -48,22 +49,21 @@ class TransactionFormContent extends StatelessWidget {
             initialValue: transaction?.title,
             focusNode: titleFocusNode,
             name: AppConstants.titleField,
-            decoration: const InputDecoration(
-              labelText: 'Title',
-              suffixIcon: Icon(
-                Icons.title,
-              ),
+            decoration: InputDecoration(
+              labelText: context.tr.title,
+              suffixIcon: const Icon(Icons.title),
             ),
             textInputAction: TextInputAction.next,
             onChanged: (value) {
-              localCubit.checkFormStatus(
+              localCubit.validateForm(
                 isFormValid: formKey.currentState?.validate() ?? false,
               );
               titleFocusNode.requestFocus();
             },
             onSubmitted: (_) => valueFocusNode.requestFocus(),
-            validator: (value) =>
-                value == null || value.isEmpty ? 'Please enter a title' : null,
+            validator: (value) => value == null || value.isEmpty
+                ? context.tr.pleaseEnterATitle
+                : null,
           ),
           FormBuilderTextField(
             initialValue: transaction?.value.toString(),
@@ -71,17 +71,18 @@ class TransactionFormContent extends StatelessWidget {
             keyboardType: TextInputType.number,
             focusNode: valueFocusNode,
             onChanged: (value) {
-              localCubit.checkFormStatus(
+              localCubit.validateForm(
                 isFormValid: formKey.currentState?.validate() ?? false,
               );
               valueFocusNode.requestFocus();
             },
-            decoration: const InputDecoration(
-              labelText: 'Value',
-              suffixIcon: Icon(Icons.attach_money),
+            decoration: InputDecoration(
+              labelText: context.tr.value,
+              suffixIcon: const Icon(Icons.attach_money),
             ),
-            validator: (value) =>
-                value == null || value.isEmpty ? 'Please enter a value' : null,
+            validator: (value) => value == null || value.isEmpty
+                ? context.tr.pleaseEnterAValue
+                : null,
           ),
           FormBuilderDateTimePicker(
             name: AppConstants.dateTimeField,
@@ -89,9 +90,9 @@ class TransactionFormContent extends StatelessWidget {
                 transaction?.updatedAt ?? dateFormat.tryParse(now.toString()),
             inputType: InputType.date,
             format: dateFormat,
-            decoration: const InputDecoration(
-              labelText: 'Date',
-              suffixIcon: Icon(Icons.calendar_today),
+            decoration: InputDecoration(
+              labelText: context.tr.date,
+              suffixIcon: const Icon(Icons.calendar_today),
             ),
           ),
           Padding(
