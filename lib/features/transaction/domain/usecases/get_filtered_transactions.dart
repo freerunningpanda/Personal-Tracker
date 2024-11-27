@@ -53,19 +53,4 @@ class GetFilteredTransactionsParams extends Equatable {
         date,
         valueFilter,
       ];
-
-  /// [copyWith] method.
-  GetFilteredTransactionsParams copyWith({
-    TransactionCategory? category,
-    TransactionType? type,
-    DateTime? date,
-    ValueFilter? valueFilter,
-  }) {
-    return GetFilteredTransactionsParams(
-      category: category ?? this.category,
-      type: type ?? this.type,
-      date: date ?? this.date,
-      valueFilter: valueFilter ?? this.valueFilter,
-    );
-  }
 }

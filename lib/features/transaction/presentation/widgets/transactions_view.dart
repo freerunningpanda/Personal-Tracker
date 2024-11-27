@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracker/core/constants/app_constants.dart';
-import 'package:tracker/core/enums/transaction_category.dart';
 import 'package:tracker/core/helpers/date_time_helper.dart';
 import 'package:tracker/core/presentation/theme/app_theme.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 import 'package:tracker/features/transaction/domain/entities/transaction.dart';
-import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc.dart';
+import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
 import 'package:tracker/features/transaction/presentation/cubit/form_cubit.dart';
-import 'package:tracker/features/transaction/presentation/widgets/filters_dialog.dart';
+import 'package:tracker/features/transaction/presentation/widgets/filter_controls.dart';
 import 'package:tracker/features/transaction/presentation/widgets/transaction_dialog.dart';
 
 /// [TransactionsView] is a class.
@@ -44,19 +43,7 @@ class TransactionsView extends StatelessWidget {
 
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            IconButton(
-              onPressed: () => showDialog<FiltersDialog>(
-                context: context,
-                builder: (context) => FiltersDialog(),
-              ),
-              icon: const Icon(Icons.filter_list),
-              color: theme.appColors.textColors.secondaryColor,
-            ),
-          ],
-        ),
+        const FilterControls(),
         Expanded(
           child: ListView.builder(
             itemCount: transactions.length,

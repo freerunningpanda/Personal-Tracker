@@ -76,7 +76,7 @@ class LocalDatasourceImpl implements LocalDatasource {
         trasactions.map(TransactionModel.fromDriftEntity).toList();
 
     // transactionsModel.sort((a, b) => a.createdAt!.compareTo(b.createdAt!));
-    final list = transactionsModel.where((transaction) {
+    final filteredList = transactionsModel.where((transaction) {
       final matchesCategory =
           params.category == null || params.category == transaction.category;
       final matchesType =
@@ -90,11 +90,11 @@ class LocalDatasourceImpl implements LocalDatasource {
     }).toList();
 
     if (params.valueFilter?.name == 'less') {
-      list.sort((a, b) => a.value.compareTo(b.value));
-    } else {
-      list.sort((a, b) => b.value.compareTo(a.value));
+      filteredList.sort((a, b) => a.value.compareTo(b.value));
+    } else if (params.valueFilter?.name == 'more') {
+      filteredList.sort((a, b) => b.value.compareTo(a.value));
     }
 
-    return list;
+    return filteredList;
   }
 }

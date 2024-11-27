@@ -6,11 +6,11 @@ sealed class TransactionEvent {
   const TransactionEvent();
 }
 
-/// [_GetTransactionsEvent] is a class.
+/// [GetTransactionsEvent] is a class.
 /// That represents the event to get transactions.
-class _GetTransactionsEvent extends TransactionEvent {
-  /// [_GetTransactionsEvent] constructor.
-  const _GetTransactionsEvent();
+class GetTransactionsEvent extends TransactionEvent {
+  /// [GetTransactionsEvent] constructor.
+  const GetTransactionsEvent();
 }
 
 /// [CreateTransactionEvent] is a class.
@@ -47,8 +47,22 @@ class DeleteTransactionEvent extends TransactionEvent {
 /// That represents the event to get filtered transactions.
 class GetFilteredTransactionsEvent extends TransactionEvent {
   /// [GetFilteredTransactionsEvent] constructor.
-  const GetFilteredTransactionsEvent(this.params);
+  const GetFilteredTransactionsEvent({
+    this.category,
+    this.type,
+    this.date,
+    this.valueFilter,
+  });
 
-  /// [params] is the parameters to filter transactions.
-  final GetFilteredTransactionsParams params;
+  /// [category] is the transaction category.
+  final TransactionCategory? category;
+
+  /// [type] is the transaction type.
+  final TransactionType? type;
+
+  /// [date] is the date to filter the transactions.
+  final DateTime? date;
+
+  /// [valueFilter] is the value filter to filter the transactions.
+  final ValueFilter? valueFilter;
 }

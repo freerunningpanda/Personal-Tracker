@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 /// [TransactionCategory] is an enum class.
 /// Contains all the categories of transactions.
 enum TransactionCategory {
+  /// [all] categories.
+  all,
+
   /// [food] category.
   food,
 
@@ -29,7 +32,7 @@ enum TransactionCategory {
 
   /// [getIcon] method.
   /// Returns the icon data for the category.
-  IconData getIcon() => switch (this) {
+  IconData? getIcon() => switch (this) {
         food => Icons.fastfood,
         travelling => Icons.flight,
         transport => Icons.directions_bus,
@@ -38,5 +41,6 @@ enum TransactionCategory {
         entertainment => Icons.movie,
         education => Icons.school,
         other => Icons.category,
+        _ => null,
       };
 }

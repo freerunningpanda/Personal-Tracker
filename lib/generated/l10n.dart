@@ -175,7 +175,7 @@ class S {
     return Intl.message(
       'from less',
       name: 'fromLess',
-      desc: '',
+      desc: 'The label of the from less input',
       args: [],
     );
   }
@@ -185,7 +185,17 @@ class S {
     return Intl.message(
       'from more',
       name: 'fromMore',
-      desc: '',
+      desc: 'The label of the from more input',
+      args: [],
+    );
+  }
+
+  /// `Apply`
+  String get apply {
+    return Intl.message(
+      'Apply',
+      name: 'apply',
+      desc: 'The text of the apply button',
       args: [],
     );
   }

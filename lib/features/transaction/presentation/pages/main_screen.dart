@@ -4,7 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracker/core/presentation/theme/app_theme.dart';
 import 'package:tracker/core/presentation/widgets/app_tap_bar.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
-import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc.dart';
+import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
+import 'package:tracker/features/transaction/presentation/widgets/filter_controls.dart';
 import 'package:tracker/features/transaction/presentation/widgets/transaction_dialog.dart';
 import 'package:tracker/features/transaction/presentation/widgets/transactions_view.dart';
 
@@ -60,14 +61,19 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                           child: TabBarView(
                             controller: _tabController,
                             children: [
-                              Center(
-                                child: Text(
-                                  context.tr.noTransactionsYet,
-                                  style: TextStyle(
-                                    color: theme
-                                        .appColors.textColors.secondaryColor,
+                              Column(
+                                children: [
+                                  const FilterControls(),
+                                  Center(
+                                    child: Text(
+                                      context.tr.noTransactionsYet,
+                                      style: TextStyle(
+                                        color: theme.appColors.textColors
+                                            .secondaryColor,
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
                               Center(
                                 child: Text(context.tr.analytics),

@@ -38,6 +38,7 @@ void _initTransactions() {
         sl(),
       ),
     )
+    ..registerLazySingleton<FiltersBloc>(FiltersBloc.new)
     ..registerFactory(FormCubit.new)
 
     // Use cases.

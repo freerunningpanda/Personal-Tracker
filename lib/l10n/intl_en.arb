@@ -61,5 +61,18 @@
     "type": "text"
   },
   "fromLess": "from less",
-  "fromMore": "from more"
+  "@fromLess": {
+    "description": "The label of the from less input",
+    "type": "text"
+  },
+  "fromMore": "from more",
+  "@fromMore": {
+    "description": "The label of the from more input",
+    "type": "text"
+  },
+  "apply": "Apply",
+  "@apply": {
+    "description": "The text of the apply button",
+    "type": "text"
+  }
 }

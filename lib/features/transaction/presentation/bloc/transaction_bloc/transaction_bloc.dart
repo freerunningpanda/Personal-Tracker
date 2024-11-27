@@ -1,5 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tracker/core/enums/transaction_category.dart';
+import 'package:tracker/core/enums/transaction_type.dart';
+import 'package:tracker/core/enums/value_filter.dart';
 import 'package:tracker/core/usecase/usecase.dart';
 import 'package:tracker/features/transaction/domain/entities/transaction.dart';
 import 'package:tracker/features/transaction/domain/usecases/create_transaction.dart';
@@ -24,12 +27,12 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     this._deleteTransaction,
     this._getFilteredTransactions,
   ) : super(const TransactionInitialState()) {
-    on<_GetTransactionsEvent>(_onGetTransactions);
+    on<GetTransactionsEvent>(_onGetTransactions);
     on<CreateTransactionEvent>(_onCreateTransaction);
     on<UpdateTransactionEvent>(_onUpdateTransaction);
     on<DeleteTransactionEvent>(_onDeleteTransaction);
     on<GetFilteredTransactionsEvent>(_onGetFilteredTransactions);
-    add(const _GetTransactionsEvent());
+    add(const GetTransactionsEvent());
   }
 
   final GetTransactions _getTransactions;
@@ -39,7 +42,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   final GetFilteredTransactions _getFilteredTransactions;
 
   Future<void> _onGetTransactions(
-    _GetTransactionsEvent event,
+    GetTransactionsEvent event,
     _Emit emit,
   ) async {
     emit(const TransactionLoadingState());
@@ -75,7 +78,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     );
 
     result.fold(
-      onSuccess: (_) => add(const _GetTransactionsEvent()),
+      onSuccess: (_) => add(const GetTransactionsEvent()),
       onFailure: (failure) => emit(
         TransactionErrorState(failure.message),
       ),
@@ -95,7 +98,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     );
 
     result.fold(
-      onSuccess: (_) => add(const _GetTransactionsEvent()),
+      onSuccess: (_) => add(const GetTransactionsEvent()),
       onFailure: (failure) => emit(
         TransactionErrorState(failure.message),
       ),
@@ -115,7 +118,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     );
 
     result.fold(
-      onSuccess: (_) => add(const _GetTransactionsEvent()),
+      onSuccess: (_) => add(const GetTransactionsEvent()),
       onFailure: (failure) => emit(
         TransactionErrorState(failure.message),
       ),
@@ -130,10 +133,10 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
 
     final result = await _getFilteredTransactions.call(
       GetFilteredTransactionsParams(
-        category: event.params.category,
-        type: event.params.type,
-        date: event.params.date,
-        valueFilter: event.params.valueFilter,
+        category: event.category,
+        type: event.type,
+        date: event.date,
+        valueFilter: event.valueFilter,
       ),
     );
 
