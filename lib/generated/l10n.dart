@@ -169,6 +169,26 @@ class S {
       args: [],
     );
   }
+
+  /// `from less`
+  String get fromLess {
+    return Intl.message(
+      'from less',
+      name: 'fromLess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `from more`
+  String get fromMore {
+    return Intl.message(
+      'from more',
+      name: 'fromMore',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

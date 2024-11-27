@@ -7,6 +7,7 @@ import 'package:tracker/features/transaction/domain/entities/transaction.dart';
 import 'package:tracker/features/transaction/domain/repositories/transaction_repository.dart';
 import 'package:tracker/features/transaction/domain/usecases/create_transaction.dart';
 import 'package:tracker/features/transaction/domain/usecases/delete_transaction.dart';
+import 'package:tracker/features/transaction/domain/usecases/get_filtered_transactions.dart';
 import 'package:tracker/features/transaction/domain/usecases/update_transaction.dart';
 
 /// [TransactionRepositoryImpl] is a class.
@@ -68,6 +69,22 @@ class TransactionRepositoryImpl implements TransactionRepository {
       );
 
       return Success();
+    } catch (e) {
+      return Failure(e.toString());
+    }
+  }
+
+  @override
+  Future<Result<List<Transaction>>> getFilteredTransactions(
+    GetFilteredTransactionsParams params,
+  ) async {
+    try {
+      final transactions =
+          await _localDatasource.getFilteredTransactions(params);
+
+      log('Params: $params');
+
+      return Success(data: transactions);
     } catch (e) {
       return Failure(e.toString());
     }

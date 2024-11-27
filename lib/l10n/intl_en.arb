@@ -59,5 +59,7 @@
   "@pleaseEnterATitle": {
     "description": "The message displayed when the title input is empty",
     "type": "text"
-  }
+  },
+  "fromLess": "from less",
+  "fromMore": "from more"
 }

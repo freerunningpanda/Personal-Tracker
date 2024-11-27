@@ -42,3 +42,13 @@ class DeleteTransactionEvent extends TransactionEvent {
   /// [id] is the id of the transaction to be deleted.
   final int id;
 }
+
+/// [GetFilteredTransactionsEvent] is a class.
+/// That represents the event to get filtered transactions.
+class GetFilteredTransactionsEvent extends TransactionEvent {
+  /// [GetFilteredTransactionsEvent] constructor.
+  const GetFilteredTransactionsEvent(this.params);
+
+  /// [params] is the parameters to filter transactions.
+  final GetFilteredTransactionsParams params;
+}

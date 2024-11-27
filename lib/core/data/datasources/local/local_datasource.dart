@@ -1,4 +1,5 @@
 import 'package:tracker/features/transaction/data/models/transaction_model.dart';
+import 'package:tracker/features/transaction/domain/usecases/get_filtered_transactions.dart';
 
 /// [LocalDatasource] is an abstract class.
 /// It is used to define the methods that a local datasource should implement.
@@ -14,4 +15,9 @@ abstract interface class LocalDatasource {
 
   /// method [deleteTransaction] deletes a transaction.
   Future<void> deleteTransaction(int id);
+
+  /// method [getFilteredTransactions] gets a list of filtered transactions.
+  Future<List<TransactionModel>> getFilteredTransactions(
+    GetFilteredTransactionsParams params,
+  );
 }

@@ -15,6 +15,7 @@ enum TransactionType {
   /// Returns the color of the transaction type.
   Color getColor(BuildContext context) {
     final color = context.theme.appColors.mainColors;
+
     return switch (this) {
       expense => color.redColor,
       income => color.greenColor,

@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 import 'package:tracker/core/data/datasources/local/local_datasource.dart';
 import 'package:tracker/core/database/app_database.dart';
 import 'package:tracker/features/transaction/data/models/transaction_model.dart';
+import 'package:tracker/features/transaction/domain/usecases/get_filtered_transactions.dart';
 
 /// [LocalDatasourceImpl] is a class.
 /// It is an implementation of the [LocalDatasource] interface.
@@ -62,5 +63,38 @@ class LocalDatasourceImpl implements LocalDatasource {
         ),
       );
     }
+  }
+
+  @override
+  Future<List<TransactionModel>> getFilteredTransactions(
+    GetFilteredTransactionsParams params,
+  ) async {
+    final trasactions =
+        await _drift.select(_drift.transactionDriftEntity).get();
+
+    final transactionsModel =
+        trasactions.map(TransactionModel.fromDriftEntity).toList();
+
+    // transactionsModel.sort((a, b) => a.createdAt!.compareTo(b.createdAt!));
+    final list = transactionsModel.where((transaction) {
+      final matchesCategory =
+          params.category == null || params.category == transaction.category;
+      final matchesType =
+          params.type == null || params.type == transaction.type;
+      final matchesDate = params.date == null ||
+          (transaction.updatedAt != null
+              ? params.date?.day == transaction.updatedAt?.day
+              : params.date?.day == transaction.createdAt?.day);
+
+      return matchesCategory && matchesType && matchesDate;
+    }).toList();
+
+    if (params.valueFilter?.name == 'less') {
+      list.sort((a, b) => a.value.compareTo(b.value));
+    } else {
+      list.sort((a, b) => b.value.compareTo(a.value));
+    }
+
+    return list;
   }
 }

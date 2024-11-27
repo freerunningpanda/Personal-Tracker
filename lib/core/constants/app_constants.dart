@@ -11,6 +11,9 @@ class AppConstants {
   /// [dateTimeField] is the date and time of the transaction.
   static const dateTimeField = 'dateTime';
 
+  /// [filteredDateTimeField] is the date and time of the filter.
+  static const filteredDateTimeField = 'filteredDateTime';
+
   /// [commonSize24] is the common size used in the app.
   static const commonSize24 = 24.0;
 

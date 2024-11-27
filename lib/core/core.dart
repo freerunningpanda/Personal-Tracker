@@ -14,6 +14,7 @@ import 'package:tracker/features/transaction/data/repositories/transaction_repos
 import 'package:tracker/features/transaction/domain/repositories/transaction_repository.dart';
 import 'package:tracker/features/transaction/domain/usecases/create_transaction.dart';
 import 'package:tracker/features/transaction/domain/usecases/delete_transaction.dart';
+import 'package:tracker/features/transaction/domain/usecases/get_filtered_transactions.dart';
 import 'package:tracker/features/transaction/domain/usecases/get_transactions.dart';
 import 'package:tracker/features/transaction/domain/usecases/update_transaction.dart';
 import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc.dart';

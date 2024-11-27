@@ -27,6 +27,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "createATransaction":
             MessageLookupByLibrary.simpleMessage("Add a transaction"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
+        "fromLess": MessageLookupByLibrary.simpleMessage("from less"),
+        "fromMore": MessageLookupByLibrary.simpleMessage("from more"),
         "noTransactionsYet":
             MessageLookupByLibrary.simpleMessage("No transactions yet"),
         "pleaseEnterATitle":

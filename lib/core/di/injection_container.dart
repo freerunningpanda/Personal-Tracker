@@ -35,6 +35,7 @@ void _initTransactions() {
         sl(),
         sl(),
         sl(),
+        sl(),
       ),
     )
     ..registerFactory(FormCubit.new)
@@ -44,6 +45,9 @@ void _initTransactions() {
     ..registerLazySingleton<CreateTransaction>(() => CreateTransaction(sl()))
     ..registerLazySingleton<UpdateTransaction>(() => UpdateTransaction(sl()))
     ..registerLazySingleton<DeleteTransaction>(() => DeleteTransaction(sl()))
+    ..registerLazySingleton<GetFilteredTransactions>(
+      () => GetFilteredTransactions(sl()),
+    )
 
     // Repositories.
     ..registerLazySingleton<TransactionRepository>(
