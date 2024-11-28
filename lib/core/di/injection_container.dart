@@ -36,6 +36,7 @@ void _initTransactions() {
         sl(),
         sl(),
         sl(),
+        sl(),
       ),
     )
     ..registerLazySingleton<FiltersBloc>(FiltersBloc.new)
@@ -49,6 +50,7 @@ void _initTransactions() {
     ..registerLazySingleton<GetFilteredTransactions>(
       () => GetFilteredTransactions(sl()),
     )
+    ..registerLazySingleton<SearchTransactions>(() => SearchTransactions(sl()))
 
     // Repositories.
     ..registerLazySingleton<TransactionRepository>(

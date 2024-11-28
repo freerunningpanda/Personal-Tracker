@@ -66,3 +66,13 @@ class GetFilteredTransactionsEvent extends TransactionEvent {
   /// [valueFilter] is the value filter to filter the transactions.
   final ValueFilter? valueFilter;
 }
+
+/// [SearchTransactionsEvent] is a class.
+/// That represents the event to search transactions by name.
+class SearchTransactionsEvent extends TransactionEvent {
+  /// [SearchTransactionsEvent] constructor.
+  const SearchTransactionsEvent(this.query);
+
+  /// [query] is the query to search transactions.
+  final String query;
+}

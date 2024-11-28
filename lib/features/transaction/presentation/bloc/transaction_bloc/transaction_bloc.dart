@@ -9,6 +9,7 @@ import 'package:tracker/features/transaction/domain/usecases/create_transaction.
 import 'package:tracker/features/transaction/domain/usecases/delete_transaction.dart';
 import 'package:tracker/features/transaction/domain/usecases/get_filtered_transactions.dart';
 import 'package:tracker/features/transaction/domain/usecases/get_transactions.dart';
+import 'package:tracker/features/transaction/domain/usecases/search_transactions.dart';
 import 'package:tracker/features/transaction/domain/usecases/update_transaction.dart';
 
 part 'transaction_event.dart';
@@ -26,12 +27,14 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     this._updateTransaction,
     this._deleteTransaction,
     this._getFilteredTransactions,
+    this._searchTransactions,
   ) : super(const TransactionInitialState()) {
     on<GetTransactionsEvent>(_onGetTransactions);
     on<CreateTransactionEvent>(_onCreateTransaction);
     on<UpdateTransactionEvent>(_onUpdateTransaction);
     on<DeleteTransactionEvent>(_onDeleteTransaction);
     on<GetFilteredTransactionsEvent>(_onGetFilteredTransactions);
+    on<SearchTransactionsEvent>(_onSearchTransactions);
     add(const GetTransactionsEvent());
   }
 
@@ -40,6 +43,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   final UpdateTransaction _updateTransaction;
   final DeleteTransaction _deleteTransaction;
   final GetFilteredTransactions _getFilteredTransactions;
+  final SearchTransactions _searchTransactions;
 
   Future<void> _onGetTransactions(
     GetTransactionsEvent event,
@@ -149,6 +153,30 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
         if (transactions.data?.isEmpty ?? true) {
           emit(const TransactionInitialState());
         }
+      },
+      onFailure: (failure) => emit(
+        TransactionErrorState(failure.message),
+      ),
+    );
+  }
+
+  Future<void> _onSearchTransactions(
+    SearchTransactionsEvent event,
+    _Emit emit,
+  ) async {
+    emit(const TransactionLoadingState());
+
+    final result = await _searchTransactions.call(
+      SearchTransactionsParams(
+        query: event.query,
+      ),
+    );
+
+    result.fold(
+      onSuccess: (transactions) {
+        emit(
+          TransactionLoadedState(transactions.data ?? []),
+        );
       },
       onFailure: (failure) => emit(
         TransactionErrorState(failure.message),

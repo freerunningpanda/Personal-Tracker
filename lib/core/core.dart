@@ -16,6 +16,7 @@ import 'package:tracker/features/transaction/domain/usecases/create_transaction.
 import 'package:tracker/features/transaction/domain/usecases/delete_transaction.dart';
 import 'package:tracker/features/transaction/domain/usecases/get_filtered_transactions.dart';
 import 'package:tracker/features/transaction/domain/usecases/get_transactions.dart';
+import 'package:tracker/features/transaction/domain/usecases/search_transactions.dart';
 import 'package:tracker/features/transaction/domain/usecases/update_transaction.dart';
 import 'package:tracker/features/transaction/presentation/bloc/filters_bloc/filters_bloc.dart';
 import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
