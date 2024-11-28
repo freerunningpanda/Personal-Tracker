@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracker/core/presentation/theme/app_theme.dart';
 import 'package:tracker/core/presentation/widgets/app_tap_bar.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
+import 'package:tracker/features/analysis/presentation/widgets/analysis_view.dart';
 import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
 import 'package:tracker/features/transaction/presentation/widgets/top_controls.dart';
 import 'package:tracker/features/transaction/presentation/widgets/transaction_dialog.dart';
@@ -84,9 +85,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                                   spacer,
                                 ],
                               ),
-                              Center(
-                                child: Text(context.tr.analytics),
-                              ),
+                              const AnalysisView(),
                             ],
                           ),
                         ),
@@ -104,9 +103,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                               TransactionsView(
                                 transactions: state.transactions,
                               ),
-                              Center(
-                                child: Text(context.tr.analytics),
-                              ),
+                              const AnalysisView(),
                             ],
                           ),
                         ),

@@ -219,6 +219,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Analysis is empty`
+  String get analysisIsEmpty {
+    return Intl.message(
+      'Analysis is empty',
+      name: 'analysisIsEmpty',
+      desc: 'The message displayed when the analysis is empty',
+      args: [],
+    );
+  }
+
+  /// `Please add some transactions`
+  String get pleaseAddSomeTransactions {
+    return Intl.message(
+      'Please add some transactions',
+      name: 'pleaseAddSomeTransactions',
+      desc: 'The message displayed when there are no transactions',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -8,7 +8,7 @@ sealed class FiltersEvent {
 
 /// [SetFiltersEvent] is a class.
 /// That represents the event to set filters.
-class SetFiltersEvent extends FiltersEvent {
+final class SetFiltersEvent extends FiltersEvent {
   /// [SetFiltersEvent] constructor.
   const SetFiltersEvent({
     this.category,
@@ -36,7 +36,7 @@ class SetFiltersEvent extends FiltersEvent {
 }
 
 /// [ClearFiltersEvent] is a class.
-class ClearFiltersEvent extends FiltersEvent {
+final class ClearFiltersEvent extends FiltersEvent {
   /// [ClearFiltersEvent] constructor.
   const ClearFiltersEvent();
 }

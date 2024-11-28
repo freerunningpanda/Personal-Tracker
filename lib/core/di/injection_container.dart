@@ -18,6 +18,9 @@ Future<void> initDependencyInjection() async {
 
   // Transactions init dependency.
   _initTransactions();
+
+  // Analysis init dependency.
+  _initAnalysis();
 }
 
 void _initTheme() {
@@ -55,5 +58,22 @@ void _initTransactions() {
     // Repositories.
     ..registerLazySingleton<TransactionRepository>(
       () => TransactionRepositoryImpl(sl()),
+    );
+}
+
+void _initAnalysis() {
+  sl
+    // Bloc
+    ..registerLazySingleton<AnalysisBloc>(
+      () => AnalysisBloc(sl()),
+    )
+
+    // Use cases
+    ..registerLazySingleton<GetAnalysisByCategory>(
+        () => GetAnalysisByCategory(sl()))
+
+    // Repositories
+    ..registerLazySingleton<AnalysisRepository>(
+      () => AnalysisRepositoryImpl(sl()),
     );
 }

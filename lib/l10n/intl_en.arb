@@ -84,5 +84,15 @@
   "@addSome": {
     "description": "The text of the add some button",
     "type": "text"
+  },
+  "analysisIsEmpty": "Analysis is empty",
+  "@analysisIsEmpty": {
+    "description": "The message displayed when the analysis is empty",
+    "type": "text"
+  },
+  "pleaseAddSomeTransactions": "Please add some transactions",
+  "@pleaseAddSomeTransactions": {
+    "description": "The message displayed when there are no transactions",
+    "type": "text"
   }
 }

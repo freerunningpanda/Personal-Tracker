@@ -100,6 +100,7 @@ class TransactionFormContent extends StatelessWidget {
             child: DropdownButton<TransactionType>(
               value: type,
               items: TransactionType.values
+                  .where((type) => type != TransactionType.all)
                   .map(
                     (type) => DropdownMenuItem(
                       value: type,
@@ -115,6 +116,8 @@ class TransactionFormContent extends StatelessWidget {
           DropdownButton<TransactionCategory>(
             value: category,
             items: TransactionCategory.values
+                .where((category) => category != TransactionCategory.all)
+                .toList()
                 .map(
                   (category) => DropdownMenuItem(
                     value: category,

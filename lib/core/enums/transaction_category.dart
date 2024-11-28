@@ -43,4 +43,21 @@ enum TransactionCategory {
         other => Icons.category,
         _ => null,
       };
+
+  /// [getColor] method.
+  /// Returns the color of the category.
+  Color? getColor(BuildContext context) {
+    // final color = context.theme.appColors.mainColors;
+
+    return switch (this) {
+      food => Colors.orange,
+      travelling => Colors.blue,
+      transport => Colors.purple,
+      shopping => Colors.green,
+      health => Colors.red,
+      entertainment => Colors.yellow,
+      education => Colors.pink,
+      _ => null,
+    };
+  }
 }

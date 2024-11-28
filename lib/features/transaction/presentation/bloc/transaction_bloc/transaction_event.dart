@@ -8,14 +8,14 @@ sealed class TransactionEvent {
 
 /// [GetTransactionsEvent] is a class.
 /// That represents the event to get transactions.
-class GetTransactionsEvent extends TransactionEvent {
+final class GetTransactionsEvent extends TransactionEvent {
   /// [GetTransactionsEvent] constructor.
   const GetTransactionsEvent();
 }
 
 /// [CreateTransactionEvent] is a class.
 /// That represents the event to create a transaction.
-class CreateTransactionEvent extends TransactionEvent {
+final class CreateTransactionEvent extends TransactionEvent {
   /// [CreateTransactionEvent] constructor.
   const CreateTransactionEvent(this.transaction);
 
@@ -25,7 +25,7 @@ class CreateTransactionEvent extends TransactionEvent {
 
 /// [UpdateTransactionEvent] is a class.
 /// That represents the event to update a transaction.
-class UpdateTransactionEvent extends TransactionEvent {
+final class UpdateTransactionEvent extends TransactionEvent {
   /// [UpdateTransactionEvent] constructor.
   const UpdateTransactionEvent(this.transaction);
 
@@ -35,7 +35,7 @@ class UpdateTransactionEvent extends TransactionEvent {
 
 /// [DeleteTransactionEvent] is a class.
 /// That represents the event to delete a transaction.
-class DeleteTransactionEvent extends TransactionEvent {
+final class DeleteTransactionEvent extends TransactionEvent {
   /// [DeleteTransactionEvent] constructor.
   const DeleteTransactionEvent(this.id);
 
@@ -45,7 +45,7 @@ class DeleteTransactionEvent extends TransactionEvent {
 
 /// [GetFilteredTransactionsEvent] is a class.
 /// That represents the event to get filtered transactions.
-class GetFilteredTransactionsEvent extends TransactionEvent {
+final class GetFilteredTransactionsEvent extends TransactionEvent {
   /// [GetFilteredTransactionsEvent] constructor.
   const GetFilteredTransactionsEvent({
     this.category,
@@ -69,7 +69,7 @@ class GetFilteredTransactionsEvent extends TransactionEvent {
 
 /// [SearchTransactionsEvent] is a class.
 /// That represents the event to search transactions by name.
-class SearchTransactionsEvent extends TransactionEvent {
+final class SearchTransactionsEvent extends TransactionEvent {
   /// [SearchTransactionsEvent] constructor.
   const SearchTransactionsEvent(this.query);
 

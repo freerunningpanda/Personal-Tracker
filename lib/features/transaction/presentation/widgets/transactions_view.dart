@@ -4,6 +4,7 @@ import 'package:tracker/core/constants/app_constants.dart';
 import 'package:tracker/core/helpers/date_time_helper.dart';
 import 'package:tracker/core/presentation/theme/app_theme.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
+import 'package:tracker/features/analysis/presentation/bloc/analysis_bloc.dart';
 import 'package:tracker/features/transaction/domain/entities/transaction.dart';
 import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
 import 'package:tracker/features/transaction/presentation/cubit/form_cubit.dart';
@@ -37,6 +38,19 @@ class TransactionsView extends StatelessWidget {
         );
       };
 
+  void Function() _onDismissed(
+    BuildContext context, {
+    required Transaction transaction,
+  }) =>
+      () {
+        context.read<TransactionBloc>().add(
+              DeleteTransactionEvent(
+                transaction.id!,
+              ),
+            );
+        context.read<AnalysisBloc>().add(const GetAnalysisEvent());
+      };
+
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
@@ -60,11 +74,8 @@ class TransactionsView extends StatelessWidget {
                 direction: DismissDirection.endToStart,
                 key: UniqueKey(),
                 onDismissed: transaction.id != null
-                    ? (_) => context.read<TransactionBloc>().add(
-                          DeleteTransactionEvent(
-                            transaction.id!,
-                          ),
-                        )
+                    ? (_) =>
+                        _onDismissed(context, transaction: transaction).call()
                     : null,
                 background: Container(
                   padding: const EdgeInsets.symmetric(

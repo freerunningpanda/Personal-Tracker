@@ -7,6 +7,7 @@ import 'package:tracker/core/enums/transaction_category.dart';
 import 'package:tracker/core/enums/transaction_type.dart';
 import 'package:tracker/core/presentation/theme/app_theme.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
+import 'package:tracker/features/analysis/presentation/bloc/analysis_bloc.dart';
 import 'package:tracker/features/transaction/domain/entities/transaction.dart';
 import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
 import 'package:tracker/features/transaction/presentation/cubit/form_cubit.dart'
@@ -64,6 +65,8 @@ class TransactionDialog extends StatelessWidget {
     context.read<cubit.FormCubit>().validateForm(
           isFormValid: false,
         );
+
+    context.read<AnalysisBloc>().add(const GetAnalysisEvent());
   }
 
   void _updateTransaction(
@@ -106,6 +109,8 @@ class TransactionDialog extends StatelessWidget {
     context.read<cubit.FormCubit>().validateForm(
           isFormValid: false,
         );
+
+    context.read<AnalysisBloc>().add(const GetAnalysisEvent());
   }
 
   @override
