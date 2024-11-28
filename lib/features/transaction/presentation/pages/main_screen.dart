@@ -5,7 +5,7 @@ import 'package:tracker/core/presentation/theme/app_theme.dart';
 import 'package:tracker/core/presentation/widgets/app_tap_bar.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
-import 'package:tracker/features/transaction/presentation/widgets/filter_controls.dart';
+import 'package:tracker/features/transaction/presentation/widgets/top_controls.dart';
 import 'package:tracker/features/transaction/presentation/widgets/transaction_dialog.dart';
 import 'package:tracker/features/transaction/presentation/widgets/transactions_view.dart';
 
@@ -44,6 +44,8 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
       context.tr.analytics,
     ];
 
+    const spacer = Spacer();
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -63,16 +65,23 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                             children: [
                               Column(
                                 children: [
-                                  const FilterControls(),
-                                  Center(
-                                    child: Text(
-                                      context.tr.noTransactionsYet,
-                                      style: TextStyle(
-                                        color: theme.appColors.textColors
-                                            .secondaryColor,
-                                      ),
+                                  const TopControls(),
+                                  spacer,
+                                  Text(
+                                    context.tr.noTransactionsYet,
+                                    style: TextStyle(
+                                      color: theme
+                                          .appColors.textColors.secondaryColor,
                                     ),
                                   ),
+                                  Text(
+                                    context.tr.addSome,
+                                    style: TextStyle(
+                                      color: theme
+                                          .appColors.textColors.secondaryColor,
+                                    ),
+                                  ),
+                                  spacer,
                                 ],
                               ),
                               Center(

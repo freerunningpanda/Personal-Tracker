@@ -199,6 +199,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Search`
+  String get search {
+    return Intl.message(
+      'Search',
+      name: 'search',
+      desc: 'The text of the search button',
+      args: [],
+    );
+  }
+
+  /// `add some...`
+  String get addSome {
+    return Intl.message(
+      'add some...',
+      name: 'addSome',
+      desc: 'The text of the add some button',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

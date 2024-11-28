@@ -10,7 +10,23 @@ import 'package:tracker/features/transaction/presentation/widgets/filters_dialog
 /// That extends [StatelessWidget] and builds the filter controls.
 class FilterControls extends StatelessWidget {
   /// [FilterControls] constructor.
-  const FilterControls({super.key});
+  const FilterControls({
+    this.enabled = false,
+    super.key,
+  });
+
+  /// [enabled] is a flag to determine if the filter is enabled.
+  final bool enabled;
+
+  void Function() _resetFilters(BuildContext context) => () {
+        context
+          ..read<FiltersBloc>().add(
+            const ClearFiltersEvent(),
+          )
+          ..read<TransactionBloc>().add(
+            const GetTransactionsEvent(),
+          );
+      };
 
   @override
   Widget build(BuildContext context) {
@@ -20,23 +36,17 @@ class FilterControls extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         IconButton(
-          onPressed: () => showDialog<FiltersDialog>(
-            context: context,
-            builder: (context) => const FiltersDialog(),
-          ),
+          onPressed: enabled
+              ? () => showDialog<FiltersDialog>(
+                    context: context,
+                    builder: (context) => const FiltersDialog(),
+                  )
+              : null,
           icon: const Icon(Icons.filter_list),
           color: theme.appColors.textColors.secondaryColor,
         ),
         IconButton(
-          onPressed: () {
-            context
-              ..read<FiltersBloc>().add(
-                const ClearFiltersEvent(),
-              )
-              ..read<TransactionBloc>().add(
-                const GetTransactionsEvent(),
-              );
-          },
+          onPressed: enabled ? _resetFilters(context) : null,
           icon: const Icon(Icons.close),
           color: theme.appColors.textColors.secondaryColor,
         ),

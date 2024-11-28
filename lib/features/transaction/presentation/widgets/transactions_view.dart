@@ -7,7 +7,7 @@ import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 import 'package:tracker/features/transaction/domain/entities/transaction.dart';
 import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
 import 'package:tracker/features/transaction/presentation/cubit/form_cubit.dart';
-import 'package:tracker/features/transaction/presentation/widgets/filter_controls.dart';
+import 'package:tracker/features/transaction/presentation/widgets/top_controls.dart';
 import 'package:tracker/features/transaction/presentation/widgets/transaction_dialog.dart';
 
 /// [TransactionsView] is a class.
@@ -43,7 +43,10 @@ class TransactionsView extends StatelessWidget {
 
     return Column(
       children: [
-        const FilterControls(),
+        const TopControls(
+          isSearchEnabled: true,
+          isFiltersEnabled: true,
+        ),
         Expanded(
           child: ListView.builder(
             itemCount: transactions.length,

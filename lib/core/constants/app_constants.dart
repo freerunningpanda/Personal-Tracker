@@ -14,6 +14,9 @@ class AppConstants {
   /// [filteredDateTimeField] is the date and time of the filter.
   static const filteredDateTimeField = 'filteredDateTime';
 
+  /// [searchField] is the search field.
+  static const searchField = 'search';
+
   /// [commonSize24] is the common size used in the app.
   static const commonSize24 = 24.0;
 

@@ -74,5 +74,15 @@
   "@apply": {
     "description": "The text of the apply button",
     "type": "text"
+  },
+  "search": "Search",
+  "@search": {
+    "description": "The text of the search button",
+    "type": "text"
+  },
+  "addSome": "add some...",
+  "@addSome": {
+    "description": "The text of the add some button",
+    "type": "text"
   }
 }
