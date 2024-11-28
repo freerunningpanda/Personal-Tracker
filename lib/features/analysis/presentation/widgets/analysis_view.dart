@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,6 +56,11 @@ class AnalysisView extends StatelessWidget {
                     ),
                   ),
                 ),
+                Text(
+                  state.analysisByCategory
+                      .map((category) => category.total)
+                      .join(', '),
+                ),
                 const SizedBox(
                   height: AppConstants.commonSize24,
                 ),
@@ -78,12 +85,15 @@ class AnalysisView extends StatelessWidget {
   }) {
     final theme = context.theme;
 
+    log('AnalysisByCategory: $analysisByCategory');
+
     return analysisByCategory
+        .where((category) => category.total > 0)
         .map(
           (category) => PieChartSectionData(
             color: category.category.getColor(context),
             value: category.total,
-            title: '${category.total}\$',
+            title: category.category.toString().split('.').last,
             radius: 50.0,
             titleStyle: TextStyle(
               fontSize: AppConstants.commonSize16,

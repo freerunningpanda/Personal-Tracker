@@ -40,6 +40,7 @@ void _initTransactions() {
         sl(),
         sl(),
         sl(),
+        sl(),
       ),
     )
     ..registerLazySingleton<FiltersBloc>(FiltersBloc.new)

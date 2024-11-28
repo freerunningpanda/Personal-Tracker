@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracker/core/usecase/usecase.dart';
@@ -43,6 +45,8 @@ class AnalysisBloc extends Bloc<AnalysisEvent, AnalysisState> {
         emit(
           AnalysisLoaded(analysisByCategory: analysisByCategory.data ?? []),
         );
+
+        log('AnalysisBloc: AnalysisLoaded');
       },
       onFailure: (message) {
         emit(AnalysisError(message: message.toString()));

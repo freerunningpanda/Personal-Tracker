@@ -4,6 +4,7 @@ import 'package:tracker/core/enums/transaction_category.dart';
 import 'package:tracker/core/enums/transaction_type.dart';
 import 'package:tracker/core/enums/value_filter.dart';
 import 'package:tracker/core/usecase/usecase.dart';
+import 'package:tracker/features/analysis/presentation/bloc/analysis_bloc.dart';
 import 'package:tracker/features/transaction/domain/entities/transaction.dart';
 import 'package:tracker/features/transaction/domain/usecases/create_transaction.dart';
 import 'package:tracker/features/transaction/domain/usecases/delete_transaction.dart';
@@ -28,6 +29,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     this._deleteTransaction,
     this._getFilteredTransactions,
     this._searchTransactions,
+    this._analysisBloc,
   ) : super(const TransactionInitialState()) {
     on<GetTransactionsEvent>(_onGetTransactions);
     on<CreateTransactionEvent>(_onCreateTransaction);
@@ -44,6 +46,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   final DeleteTransaction _deleteTransaction;
   final GetFilteredTransactions _getFilteredTransactions;
   final SearchTransactions _searchTransactions;
+  final AnalysisBloc _analysisBloc;
 
   Future<void> _onGetTransactions(
     GetTransactionsEvent event,
@@ -55,13 +58,16 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
 
     result.fold(
       onSuccess: (transactions) {
+        if (transactions.data?.isEmpty ?? true) {
+          emit(const TransactionInitialState());
+
+          return;
+        }
         emit(
           TransactionLoadedState(transactions.data ?? []),
         );
 
-        if (transactions.data?.isEmpty ?? true) {
-          emit(const TransactionInitialState());
-        }
+        _analysisBloc.add(const GetAnalysisEvent());
       },
       onFailure: (failure) => emit(
         TransactionErrorState(failure.message),
@@ -146,13 +152,16 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
 
     result.fold(
       onSuccess: (transactions) {
+        if (transactions.data?.isEmpty ?? true) {
+          emit(const TransactionInitialState());
+
+          return;
+        }
         emit(
           TransactionLoadedState(transactions.data ?? []),
         );
 
-        if (transactions.data?.isEmpty ?? true) {
-          emit(const TransactionInitialState());
-        }
+        _analysisBloc.add(const GetAnalysisEvent());
       },
       onFailure: (failure) => emit(
         TransactionErrorState(failure.message),
