@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -84,8 +82,7 @@ class AnalysisView extends StatelessWidget {
     required List<AnalysisByCategory> analysisByCategory,
   }) {
     final theme = context.theme;
-
-    log('AnalysisByCategory: $analysisByCategory');
+    const radius = 50.0;
 
     return analysisByCategory
         .where((category) => category.total > 0)
@@ -94,7 +91,7 @@ class AnalysisView extends StatelessWidget {
             color: category.category.getColor(context),
             value: category.total,
             title: category.category.toString().split('.').last,
-            radius: 50.0,
+            radius: radius,
             titleStyle: TextStyle(
               fontSize: AppConstants.commonSize16,
               fontWeight: FontWeight.bold,

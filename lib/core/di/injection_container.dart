@@ -71,7 +71,8 @@ void _initAnalysis() {
 
     // Use cases
     ..registerLazySingleton<GetAnalysisByCategory>(
-        () => GetAnalysisByCategory(sl()))
+      () => GetAnalysisByCategory(sl()),
+    )
 
     // Repositories
     ..registerLazySingleton<AnalysisRepository>(
