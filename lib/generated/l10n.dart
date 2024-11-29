@@ -281,30 +281,30 @@ class S {
     );
   }
 
-  /// `expense`
+  /// `Expense`
   String get expense {
     return Intl.message(
-      'expense',
+      'Expense',
       name: 'expense',
       desc: 'The label of the expense radio button',
       args: [],
     );
   }
 
-  /// `income`
+  /// `Income`
   String get income {
     return Intl.message(
-      'income',
+      'Income',
       name: 'income',
       desc: 'The label of the income radio button',
       args: [],
     );
   }
 
-  /// `context.tr.all`
+  /// `all`
   String get all {
     return Intl.message(
-      'context.tr.all',
+      'all',
       name: 'all',
       desc: 'The label of the all radio button',
       args: [],

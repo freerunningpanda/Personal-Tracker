@@ -25,7 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addSome": MessageLookupByLibrary.simpleMessage("добавьте что-то..."),
-        "all": MessageLookupByLibrary.simpleMessage("все"),
+        "all": MessageLookupByLibrary.simpleMessage("Все"),
         "amount": MessageLookupByLibrary.simpleMessage("Сумма:"),
         "analysisIsEmpty": MessageLookupByLibrary.simpleMessage("Анализ пуст"),
         "analytics": MessageLookupByLibrary.simpleMessage("Аналитика"),
@@ -41,12 +41,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "education": MessageLookupByLibrary.simpleMessage("Образование"),
         "entertainment": MessageLookupByLibrary.simpleMessage("Развлечения"),
         "exceededTheLimit": m0,
-        "expense": MessageLookupByLibrary.simpleMessage("затраты"),
+        "expense": MessageLookupByLibrary.simpleMessage("Затраты"),
         "food": MessageLookupByLibrary.simpleMessage("Еда"),
         "fromLess": MessageLookupByLibrary.simpleMessage("от меньшего"),
         "fromMore": MessageLookupByLibrary.simpleMessage("от большего"),
         "health": MessageLookupByLibrary.simpleMessage("Здоровье"),
-        "income": MessageLookupByLibrary.simpleMessage("доходы"),
+        "income": MessageLookupByLibrary.simpleMessage("Доходы"),
         "limit": MessageLookupByLibrary.simpleMessage("Лимит"),
         "noTransactionsYet":
             MessageLookupByLibrary.simpleMessage("Пока нет транзакций"),

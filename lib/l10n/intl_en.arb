@@ -120,17 +120,17 @@
     "description": "The title of the attention message",
     "type": "text"
   },
-  "expense": "expense",
+  "expense": "Expense",
   "@expense": {
     "description": "The label of the expense radio button",
     "type": "text"
   },
-  "income": "income",
+  "income": "Income",
   "@income": {
     "description": "The label of the income radio button",
     "type": "text"
   },
-  "all": "context.tr.all",
+  "all": "all",
   "@all": {
     "description": "The label of the all radio button",
     "type": "text"

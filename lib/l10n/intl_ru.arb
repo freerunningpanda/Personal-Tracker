@@ -120,17 +120,17 @@
     "description": "Заголовок сообщения \"Внимание\"",
     "type": "text"
   },
-  "expense": "затраты",
+  "expense": "Затраты",
   "@expense": {
     "description": "Метка для радиокнопки затрат",
     "type": "text"
   },
-  "income": "доходы",
+  "income": "Доходы",
   "@income": {
     "description": "Метка для радиокнопки доходов",
     "type": "text"
   },
-  "all": "все",
+  "all": "Все",
   "@all": {
     "description": "Текст 'все'",
     "type": "text"

@@ -26,7 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addSome": MessageLookupByLibrary.simpleMessage("add some..."),
-        "all": MessageLookupByLibrary.simpleMessage("context.tr.all"),
+        "all": MessageLookupByLibrary.simpleMessage("all"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount:"),
         "analysisIsEmpty":
             MessageLookupByLibrary.simpleMessage("Analysis is empty"),
@@ -43,12 +43,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "education": MessageLookupByLibrary.simpleMessage("Education"),
         "entertainment": MessageLookupByLibrary.simpleMessage("Entertainment"),
         "exceededTheLimit": m0,
-        "expense": MessageLookupByLibrary.simpleMessage("expense"),
+        "expense": MessageLookupByLibrary.simpleMessage("Expense"),
         "food": MessageLookupByLibrary.simpleMessage("Food"),
         "fromLess": MessageLookupByLibrary.simpleMessage("from less"),
         "fromMore": MessageLookupByLibrary.simpleMessage("from more"),
         "health": MessageLookupByLibrary.simpleMessage("Health"),
-        "income": MessageLookupByLibrary.simpleMessage("income"),
+        "income": MessageLookupByLibrary.simpleMessage("Income"),
         "limit": MessageLookupByLibrary.simpleMessage("Limit"),
         "noTransactionsYet":
             MessageLookupByLibrary.simpleMessage("No transactions yet"),

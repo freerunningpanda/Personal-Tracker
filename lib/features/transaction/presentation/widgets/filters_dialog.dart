@@ -30,25 +30,35 @@ class FiltersDialog extends StatelessWidget {
         content: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              context.tr.category,
-              style: theme.primaryTextTheme.bodyLarge?.copyWith(
-                color: theme.appColors.textColors.mainColor,
+            Padding(
+              padding: const EdgeInsets.only(
+                top: AppConstants.commonSize16,
+              ),
+              child: Text(
+                context.tr.category,
+                style: theme.primaryTextTheme.bodyLarge?.copyWith(
+                  color: theme.appColors.textColors.mainColor,
+                ),
               ),
             ),
-            DropdownButton<TransactionCategory>(
-              isExpanded: true,
-              value: state.category ?? firstCategory,
-              items: TransactionCategory.values
-                  .map(
-                    (category) => DropdownMenuItem(
-                      value: category,
-                      child: Text(category.getName(context)),
-                    ),
-                  )
-                  .toList(),
-              onChanged: (category) =>
-                  bloc.add(SetFiltersEvent(category: category)),
+            Padding(
+              padding: const EdgeInsets.only(
+                bottom: AppConstants.commonSize16,
+              ),
+              child: DropdownButton<TransactionCategory>(
+                isExpanded: true,
+                value: state.category ?? firstCategory,
+                items: TransactionCategory.values
+                    .map(
+                      (category) => DropdownMenuItem(
+                        value: category,
+                        child: Text(category.getName(context)),
+                      ),
+                    )
+                    .toList(),
+                onChanged: (category) =>
+                    bloc.add(SetFiltersEvent(category: category)),
+              ),
             ),
             Text(
               context.tr.type,
