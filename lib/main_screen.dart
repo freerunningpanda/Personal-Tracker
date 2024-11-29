@@ -5,7 +5,7 @@ import 'package:tracker/core/presentation/theme/app_theme.dart';
 import 'package:tracker/core/presentation/widgets/app_tap_bar.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 import 'package:tracker/features/analysis/presentation/widgets/analysis_view.dart';
-import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
+import 'package:tracker/features/transaction/presentation/bloc/transactions_bloc/transactions_bloc.dart';
 import 'package:tracker/features/transaction/presentation/widgets/top_controls.dart';
 import 'package:tracker/features/transaction/presentation/widgets/transaction_dialog.dart';
 import 'package:tracker/features/transaction/presentation/widgets/transactions_view.dart';
@@ -56,9 +56,9 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
               tabController: _tabController,
             ),
             Expanded(
-              child: BlocBuilder<TransactionBloc, TransactionState>(
+              child: BlocBuilder<TransactionsBloc, TransactionsState>(
                 builder: (_, state) => switch (state) {
-                  TransactionInitialState _ => Column(
+                  TransactionsInitialState _ => Column(
                       children: [
                         Expanded(
                           child: TabBarView(
@@ -91,10 +91,10 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                         ),
                       ],
                     ),
-                  TransactionLoadingState _ => const Center(
+                  TransactionsLoadingState _ => const Center(
                       child: CircularProgressIndicator(),
                     ),
-                  TransactionLoadedState _ => Column(
+                  TransactionsLoadedState _ => Column(
                       children: [
                         Expanded(
                           child: TabBarView(
@@ -109,7 +109,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                         ),
                       ],
                     ),
-                  TransactionErrorState _ => Center(
+                  TransactionsErrorState _ => Center(
                       child: Text(state.message),
                     ),
                 },

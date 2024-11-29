@@ -10,6 +10,7 @@ import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 import 'package:tracker/features/analysis/presentation/bloc/analysis_bloc.dart';
 import 'package:tracker/features/transaction/domain/entities/transaction.dart';
 import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
+import 'package:tracker/features/transaction/presentation/bloc/transactions_bloc/transactions_bloc.dart';
 import 'package:tracker/features/transaction/presentation/cubit/form_cubit.dart'
     as cubit;
 import 'package:tracker/features/transaction/presentation/widgets/transaction_form_content.dart';
@@ -20,15 +21,11 @@ class TransactionDialog extends StatelessWidget {
   /// [TransactionDialog] constructor.
   const TransactionDialog({
     this.transaction,
-    this.isUpdate = false,
     super.key,
   });
 
   /// [transaction] is the transaction for update.
   final Transaction? transaction;
-
-  /// [isUpdate] is a flag to determine if the transaction is to be updated.
-  final bool isUpdate;
 
   void _createTransaction(
     BuildContext context, {
@@ -49,7 +46,7 @@ class TransactionDialog extends StatelessWidget {
     final parsedValue = double.tryParse(value ?? '');
 
     context
-      ..read<TransactionBloc>().add(
+      ..read<TransactionsBloc>().add(
         CreateTransactionEvent(
           Transaction(
             title: title ?? '',
@@ -73,8 +70,6 @@ class TransactionDialog extends StatelessWidget {
     BuildContext context, {
     required GlobalKey<FormBuilderState> formKey,
     Transaction? transaction,
-    TransactionCategory? category,
-    TransactionType? type,
   }) {
     formKey.currentState?.saveAndValidate();
 
@@ -95,11 +90,11 @@ class TransactionDialog extends StatelessWidget {
     context
       ..read<TransactionBloc>().add(
         UpdateTransactionEvent(
-          transaction.copyWith(
+          transaction: transaction.copyWith(
             title: title,
             value: parsedValue ?? 0.0,
-            type: type,
-            category: category,
+            type: transaction.type,
+            category: transaction.category,
             updatedAt: updatedAt,
           ),
         ),
@@ -121,67 +116,66 @@ class TransactionDialog extends StatelessWidget {
     return FormBuilder(
       key: formKey,
       child: BlocBuilder<cubit.FormCubit, cubit.FormState>(
-        builder: (_, state) => AlertDialog(
-          title: Text(
-            transaction != null
-                ? context.tr.updateATransaction
-                : context.tr.createATransaction,
-            style: theme.primaryTextTheme.headlineMedium?.copyWith(
-              color: theme.appColors.textColors.mainColor,
-            ),
-          ),
-          content: TransactionFormContent(
-            formKey: formKey,
-            transaction: transaction,
-            type: state.type,
-            category: state.category,
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => context.maybePop(),
-              child: Text(
-                MaterialLocalizations.of(context).cancelButtonLabel,
-                style: theme.primaryTextTheme.bodyMedium?.copyWith(
-                  color: theme.appColors.textColors.mainColor,
-                ),
+        builder: (_, state) => BlocBuilder<TransactionBloc, TransactionState>(
+          builder: (_, transactionState) => AlertDialog(
+            title: Text(
+              transaction != null
+                  ? context.tr.updateATransaction
+                  : context.tr.createATransaction,
+              style: theme.primaryTextTheme.headlineMedium?.copyWith(
+                color: theme.appColors.textColors.mainColor,
               ),
             ),
-            Visibility(
-              visible: state.isFormValid,
-              replacement: TextButton(
-                onPressed: null,
+            content: TransactionFormContent(
+              formKey: formKey,
+              transaction: transactionState.transaction ?? transaction,
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => context.maybePop(),
                 child: Text(
-                  !isUpdate ? context.tr.create : context.tr.update,
-                  style: theme.primaryTextTheme.bodyMedium?.copyWith(
-                    color:
-                        theme.appColors.textColors.mainColor.withOpacity(0.4),
-                  ),
-                ),
-              ),
-              child: TextButton(
-                onPressed: () => !isUpdate
-                    ? _createTransaction(
-                        context,
-                        formKey: formKey,
-                        category: state.category,
-                        type: state.type,
-                      )
-                    : _updateTransaction(
-                        context,
-                        formKey: formKey,
-                        transaction: transaction,
-                        category: state.category,
-                        type: state.type,
-                      ),
-                child: Text(
-                  !isUpdate ? context.tr.create : context.tr.update,
+                  MaterialLocalizations.of(context).cancelButtonLabel,
                   style: theme.primaryTextTheme.bodyMedium?.copyWith(
                     color: theme.appColors.textColors.mainColor,
                   ),
                 ),
               ),
-            ),
-          ],
+              Visibility(
+                visible: state.isFormValid,
+                replacement: TextButton(
+                  onPressed: null,
+                  child: Text(
+                    transaction != null ? context.tr.update : context.tr.create,
+                    style: theme.primaryTextTheme.bodyMedium?.copyWith(
+                      color:
+                          theme.appColors.textColors.mainColor.withOpacity(0.4),
+                    ),
+                  ),
+                ),
+                child: TextButton(
+                  onPressed: () => transaction != null
+                      ? _updateTransaction(
+                          context,
+                          formKey: formKey,
+                          transaction:
+                              transactionState.transaction ?? transaction,
+                        )
+                      : _createTransaction(
+                          context,
+                          formKey: formKey,
+                          category: state.category,
+                          type: state.type,
+                        ),
+                  child: Text(
+                    transaction != null ? context.tr.update : context.tr.create,
+                    style: theme.primaryTextTheme.bodyMedium?.copyWith(
+                      color: theme.appColors.textColors.mainColor,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

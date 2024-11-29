@@ -73,5 +73,5 @@ class Transaction extends Equatable {
   @override
   String toString() =>
       // ignore: lines_longer_than_80_chars
-      'Transaction(id: $id, title: $title, value: $value, type: $type, category: $category, createdAt: $createdAt, updatedAt: $updatedAt)';
+      'Transaction(id: $id, title: $title, value: $value, type: $type, category: $category, createdAt: $createdAt, updatedAt: $updatedAt)\n';
 }

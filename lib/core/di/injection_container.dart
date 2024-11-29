@@ -32,9 +32,8 @@ void _initTheme() {
 void _initTransactions() {
   sl
     // Bloc.
-    ..registerLazySingleton<TransactionBloc>(
-      () => TransactionBloc(
-        sl(),
+    ..registerLazySingleton<TransactionsBloc>(
+      () => TransactionsBloc(
         sl(),
         sl(),
         sl(),
@@ -42,6 +41,9 @@ void _initTransactions() {
         sl(),
         sl(),
       ),
+    )
+    ..registerLazySingleton<TransactionBloc>(
+      () => TransactionBloc(sl(), sl()),
     )
     ..registerLazySingleton<FiltersBloc>(FiltersBloc.new)
     ..registerFactory(FormCubit.new)

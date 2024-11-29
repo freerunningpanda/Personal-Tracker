@@ -4,7 +4,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:tracker/core/constants/app_constants.dart';
 import 'package:tracker/core/utils/debouncer.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
-import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
+import 'package:tracker/features/transaction/presentation/bloc/transactions_bloc/transactions_bloc.dart';
 
 /// [SearchForm] is a class.
 /// That extends [StatelessWidget] and builds the search form.
@@ -24,14 +24,14 @@ class SearchForm extends StatelessWidget {
         name: AppConstants.searchField,
         onChanged: (value) =>
             Debouncer(delay: const Duration(milliseconds: 500)).run(
-          () => context.read<TransactionBloc>().add(
+          () => context.read<TransactionsBloc>().add(
                 SearchTransactionsEvent(value ?? ''),
               ),
         ),
         decoration: InputDecoration(
           labelText: context.tr.search,
           suffixIcon: InkWell(
-            onTap: () => context.read<TransactionBloc>().add(
+            onTap: () => context.read<TransactionsBloc>().add(
                   const GetTransactionsEvent(),
                 ),
             child: const Icon(Icons.search),

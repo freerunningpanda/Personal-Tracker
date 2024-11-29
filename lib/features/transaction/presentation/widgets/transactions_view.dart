@@ -7,6 +7,7 @@ import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 import 'package:tracker/features/analysis/presentation/bloc/analysis_bloc.dart';
 import 'package:tracker/features/transaction/domain/entities/transaction.dart';
 import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
+import 'package:tracker/features/transaction/presentation/bloc/transactions_bloc/transactions_bloc.dart';
 import 'package:tracker/features/transaction/presentation/cubit/form_cubit.dart';
 import 'package:tracker/features/transaction/presentation/widgets/top_controls.dart';
 import 'package:tracker/features/transaction/presentation/widgets/transaction_dialog.dart';
@@ -29,11 +30,11 @@ class TransactionsView extends StatelessWidget {
   }) =>
       () {
         context.read<FormCubit>().validateForm(isFormValid: true);
+
         showDialog<TransactionDialog>(
           context: context,
           builder: (_) => TransactionDialog(
             transaction: transaction,
-            isUpdate: true,
           ),
         );
       };
@@ -43,7 +44,7 @@ class TransactionsView extends StatelessWidget {
     required Transaction transaction,
   }) =>
       () {
-        context.read<TransactionBloc>().add(
+        context.read<TransactionsBloc>().add(
               DeleteTransactionEvent(
                 transaction.id!,
               ),

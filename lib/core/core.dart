@@ -3,7 +3,6 @@ library core;
 import 'dart:async';
 
 import 'package:get_it/get_it.dart';
-
 import 'package:tracker/core/data/datasources/local/local_datasource.dart';
 import 'package:tracker/core/data/datasources/local/local_datasource_impl.dart';
 import 'package:tracker/core/database/app_database.dart';
@@ -24,6 +23,7 @@ import 'package:tracker/features/transaction/domain/usecases/search_transactions
 import 'package:tracker/features/transaction/domain/usecases/update_transaction.dart';
 import 'package:tracker/features/transaction/presentation/bloc/filters_bloc/filters_bloc.dart';
 import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
+import 'package:tracker/features/transaction/presentation/bloc/transactions_bloc/transactions_bloc.dart';
 import 'package:tracker/features/transaction/presentation/cubit/form_cubit.dart';
 
 part './di/injection_container.dart';

@@ -1,78 +1,27 @@
 part of 'transaction_bloc.dart';
 
-/// [TransactionEvent] is a class.
+/// [TranscationEvent] is a class.
 /// That represents the events that can be triggered in the [TransactionBloc].
-sealed class TransactionEvent {
-  const TransactionEvent();
+sealed class TranscationEvent {
+  const TranscationEvent();
 }
 
-/// [GetTransactionsEvent] is a class.
-/// That represents the event to get transactions.
-final class GetTransactionsEvent extends TransactionEvent {
-  /// [GetTransactionsEvent] constructor.
-  const GetTransactionsEvent();
-}
+/// [EditTransactionEvent] is a class.
+/// That represents the event to edit a transaction.
+final class EditTransactionEvent extends TranscationEvent {
+  /// [EditTransactionEvent] constructor.
+  const EditTransactionEvent({required this.transaction});
 
-/// [CreateTransactionEvent] is a class.
-/// That represents the event to create a transaction.
-final class CreateTransactionEvent extends TransactionEvent {
-  /// [CreateTransactionEvent] constructor.
-  const CreateTransactionEvent(this.transaction);
-
-  /// [transaction] is the transaction to be created.
+  /// [transaction] is the transaction to be edited.
   final Transaction transaction;
 }
 
 /// [UpdateTransactionEvent] is a class.
 /// That represents the event to update a transaction.
-final class UpdateTransactionEvent extends TransactionEvent {
+final class UpdateTransactionEvent extends TranscationEvent {
   /// [UpdateTransactionEvent] constructor.
-  const UpdateTransactionEvent(this.transaction);
+  const UpdateTransactionEvent({required this.transaction});
 
   /// [transaction] is the transaction to be updated.
   final Transaction transaction;
-}
-
-/// [DeleteTransactionEvent] is a class.
-/// That represents the event to delete a transaction.
-final class DeleteTransactionEvent extends TransactionEvent {
-  /// [DeleteTransactionEvent] constructor.
-  const DeleteTransactionEvent(this.id);
-
-  /// [id] is the id of the transaction to be deleted.
-  final int id;
-}
-
-/// [GetFilteredTransactionsEvent] is a class.
-/// That represents the event to get filtered transactions.
-final class GetFilteredTransactionsEvent extends TransactionEvent {
-  /// [GetFilteredTransactionsEvent] constructor.
-  const GetFilteredTransactionsEvent({
-    this.category,
-    this.type,
-    this.date,
-    this.valueFilter,
-  });
-
-  /// [category] is the transaction category.
-  final TransactionCategory? category;
-
-  /// [type] is the transaction type.
-  final TransactionType? type;
-
-  /// [date] is the date to filter the transactions.
-  final DateTime? date;
-
-  /// [valueFilter] is the value filter to filter the transactions.
-  final ValueFilter? valueFilter;
-}
-
-/// [SearchTransactionsEvent] is a class.
-/// That represents the event to search transactions by name.
-final class SearchTransactionsEvent extends TransactionEvent {
-  /// [SearchTransactionsEvent] constructor.
-  const SearchTransactionsEvent(this.query);
-
-  /// [query] is the query to search transactions.
-  final String query;
 }

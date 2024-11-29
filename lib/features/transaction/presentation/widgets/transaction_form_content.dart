@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -7,6 +9,8 @@ import 'package:tracker/core/enums/transaction_type.dart';
 import 'package:tracker/core/helpers/date_time_helper.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 import 'package:tracker/features/transaction/domain/entities/transaction.dart';
+import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
+import 'package:tracker/features/transaction/presentation/bloc/transactions_bloc/transactions_bloc.dart';
 import 'package:tracker/features/transaction/presentation/cubit/form_cubit.dart';
 
 /// [TransactionFormContent] is a class.
@@ -15,9 +19,7 @@ class TransactionFormContent extends StatelessWidget {
   /// [TransactionFormContent] constructor.
   const TransactionFormContent({
     required this.formKey,
-    required this.transaction,
-    required this.type,
-    required this.category,
+    this.transaction,
     super.key,
   });
 
@@ -26,12 +28,6 @@ class TransactionFormContent extends StatelessWidget {
 
   /// [transaction] is the transaction for update.
   final Transaction? transaction;
-
-  /// [type] is the transaction type from state.
-  final TransactionType type;
-
-  /// [category] is the transaction category from state.
-  final TransactionCategory category;
 
   @override
   Widget build(BuildContext context) {
@@ -95,42 +91,92 @@ class TransactionFormContent extends StatelessWidget {
               suffixIcon: const Icon(Icons.calendar_today),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: AppConstants.commonSize16),
-            child: DropdownButton<TransactionType>(
-              value: type,
-              items: TransactionType.values
-                  .where((type) => type != TransactionType.all)
-                  .map(
-                    (type) => DropdownMenuItem(
-                      value: type,
-                      child: Text(type.toString().split('.').last),
-                    ),
-                  )
-                  .toList(),
-              onChanged: (type) => localCubit.setType(
-                type: type,
-              ),
-            ),
-          ),
-          DropdownButton<TransactionCategory>(
-            value: category,
-            items: TransactionCategory.values
-                .where((category) => category != TransactionCategory.all)
-                .toList()
-                .map(
-                  (category) => DropdownMenuItem(
-                    value: category,
-                    child: Text(category.toString().split('.').last),
-                  ),
-                )
-                .toList(),
-            onChanged: (category) => localCubit.setCategory(
-              category: category,
-            ),
+          TransactionDropdowns(
+            transaction: transaction,
           ),
         ],
       ),
+    );
+  }
+}
+
+class TransactionDropdowns extends StatelessWidget {
+  final Transaction? transaction;
+  const TransactionDropdowns({
+    this.transaction,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final formCubit = context.read<FormCubit>();
+    final transactionBloc = context.read<TransactionBloc>();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: AppConstants.commonSize16),
+          child: DropdownButton<TransactionType>(
+            value: transaction?.type,
+            items: TransactionType.values
+                .where((type) => type != TransactionType.all)
+                .map(
+                  (type) => DropdownMenuItem(
+                    value: type,
+                    child: Text(type.toString().split('.').last),
+                  ),
+                )
+                .toList(),
+            onChanged: (type) {
+              if (transaction != null) {
+                transactionBloc.add(
+                  EditTransactionEvent(
+                    transaction: transaction!.copyWith(type: type),
+                  ),
+                );
+
+                return;
+              }
+              formCubit.setType(
+                type: type,
+              );
+
+              log('Type: $type');
+            },
+          ),
+        ),
+        DropdownButton<TransactionCategory>(
+          value: transaction?.category,
+          items: TransactionCategory.values
+              .where((category) => category != TransactionCategory.all)
+              .toList()
+              .map(
+                (category) => DropdownMenuItem(
+                  value: category,
+                  child: Text(category.toString().split('.').last),
+                ),
+              )
+              .toList(),
+          onChanged: (category) {
+            if (transaction != null) {
+              context.read<TransactionBloc>().add(
+                    EditTransactionEvent(
+                      transaction: transaction!.copyWith(
+                        category: category,
+                      ),
+                    ),
+                  );
+
+              return;
+            }
+            formCubit.setCategory(
+              category: category,
+            );
+            log('Category: $category');
+          },
+        ),
+      ],
     );
   }
 }

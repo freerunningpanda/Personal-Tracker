@@ -10,7 +10,7 @@ import 'package:tracker/core/helpers/date_time_helper.dart';
 import 'package:tracker/core/presentation/theme/app_theme.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 import 'package:tracker/features/transaction/presentation/bloc/filters_bloc/filters_bloc.dart';
-import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
+import 'package:tracker/features/transaction/presentation/bloc/transactions_bloc/transactions_bloc.dart';
 
 /// [FiltersDialog] is a class.
 /// That extends [StatelessWidget] and builds the filters dialog.
@@ -129,7 +129,7 @@ class FiltersDialog extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              context.read<TransactionBloc>().add(
+              context.read<TransactionsBloc>().add(
                     GetFilteredTransactionsEvent(
                       category: state.category != TransactionCategory.all
                           ? state.category
