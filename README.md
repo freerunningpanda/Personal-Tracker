@@ -22,15 +22,17 @@ An application that allows you to keep records of income and expenses in various
 
 ## Features
 
-Creating and editing transactions
-Transaction Search
-Filtering by: 
+**Creating and editing transactions**</br>
+**Transaction**</br>
+**Search**</br>
+**Filtering by:** 
   - type
   - categories
   - date
-  - price
-Statistics on expenses and income
-Saving data
+  - price</br>
+  
+**Statistics on expenses and income**</br>
+**Saving data**</br>
 
 
 ## How to Run
