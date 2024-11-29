@@ -204,5 +204,15 @@
   "@forAllTime": {
     "description": "Текст 'За всё время'",
     "type": "text"
+  },
+  "errorLoadingAnalysis": "Ошибка загрузки анализа",
+  "@errorLoadingAnalysis": {
+    "description": "Сообщение об ошибке загрузки анализа",
+    "type": "text"
+  },
+  "pleaseTryAgainLater": "Пожалуйста, попробуйте позже",
+  "@pleaseTryAgainLater": {
+    "description": "Сообщение об ошибке загрузки анализа",
+    "type": "text"
   }
 }

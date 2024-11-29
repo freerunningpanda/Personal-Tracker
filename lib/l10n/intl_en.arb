@@ -204,5 +204,15 @@
   "@forAllTime": {
     "description": "The label of the for all time text",
     "type": "text"
+  },
+  "errorLoadingAnalysis": "Error loading analysis",
+  "@errorLoadingAnalysis": {
+    "description": "The message displayed when there is an error loading the analysis",
+    "type": "text"
+  },
+  "pleaseTryAgainLater": "Please try again later",
+  "@pleaseTryAgainLater": {
+    "description": "The message displayed when there is an error loading the analysis",
+    "type": "text"
   }
 }

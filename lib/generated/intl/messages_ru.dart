@@ -40,6 +40,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage("Дата"),
         "education": MessageLookupByLibrary.simpleMessage("Образование"),
         "entertainment": MessageLookupByLibrary.simpleMessage("Развлечения"),
+        "errorLoadingAnalysis":
+            MessageLookupByLibrary.simpleMessage("Ошибка загрузки анализа"),
         "exceededTheLimit": m0,
         "expense": MessageLookupByLibrary.simpleMessage("Затраты"),
         "food": MessageLookupByLibrary.simpleMessage("Еда"),
@@ -62,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Пожалуйста, введите название"),
         "pleaseEnterAValue": MessageLookupByLibrary.simpleMessage(
             "Пожалуйста, введите значение"),
+        "pleaseTryAgainLater": MessageLookupByLibrary.simpleMessage(
+            "Пожалуйста, попробуйте позже"),
         "search": MessageLookupByLibrary.simpleMessage("Поиск"),
         "shopping": MessageLookupByLibrary.simpleMessage("Покупки"),
         "title": MessageLookupByLibrary.simpleMessage("Название"),

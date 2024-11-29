@@ -450,6 +450,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Error loading analysis`
+  String get errorLoadingAnalysis {
+    return Intl.message(
+      'Error loading analysis',
+      name: 'errorLoadingAnalysis',
+      desc: 'The message displayed when there is an error loading the analysis',
+      args: [],
+    );
+  }
+
+  /// `Please try again later`
+  String get pleaseTryAgainLater {
+    return Intl.message(
+      'Please try again later',
+      name: 'pleaseTryAgainLater',
+      desc: 'The message displayed when there is an error loading the analysis',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

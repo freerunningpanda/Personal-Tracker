@@ -42,6 +42,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "education": MessageLookupByLibrary.simpleMessage("Education"),
         "entertainment": MessageLookupByLibrary.simpleMessage("Entertainment"),
+        "errorLoadingAnalysis":
+            MessageLookupByLibrary.simpleMessage("Error loading analysis"),
         "exceededTheLimit": m0,
         "expense": MessageLookupByLibrary.simpleMessage("Expense"),
         "food": MessageLookupByLibrary.simpleMessage("Food"),
@@ -64,6 +66,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter a title"),
         "pleaseEnterAValue":
             MessageLookupByLibrary.simpleMessage("Please enter a value"),
+        "pleaseTryAgainLater":
+            MessageLookupByLibrary.simpleMessage("Please try again later"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "shopping": MessageLookupByLibrary.simpleMessage("Shopping"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
