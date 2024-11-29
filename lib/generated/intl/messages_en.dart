@@ -20,6 +20,9 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(category) =>
+      "Limit is higher than value in ${category} category";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addSome": MessageLookupByLibrary.simpleMessage("add some..."),
@@ -33,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createATransaction":
             MessageLookupByLibrary.simpleMessage("Add a transaction"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
+        "exceededTheLimit": m0,
         "fromLess": MessageLookupByLibrary.simpleMessage("from less"),
         "fromMore": MessageLookupByLibrary.simpleMessage("from more"),
         "limit": MessageLookupByLibrary.simpleMessage("Limit"),

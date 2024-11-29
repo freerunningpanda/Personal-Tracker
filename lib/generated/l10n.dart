@@ -255,8 +255,19 @@ class S {
     return Intl.message(
       'Cannot be negative',
       name: 'cannotBeNegative',
-      desc: '',
+      desc: 'The message displayed when the limit input is negative',
       args: [],
+    );
+  }
+
+  /// `Limit is higher than value in {category} category`
+  String exceededTheLimit(Object category) {
+    return Intl.message(
+      'Limit is higher than value in $category category',
+      name: 'exceededTheLimit',
+      desc:
+          'The message displayed when the limit is higher than the value in a category',
+      args: [category],
     );
   }
 }

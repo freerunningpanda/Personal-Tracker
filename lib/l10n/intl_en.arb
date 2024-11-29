@@ -100,5 +100,19 @@
     "description": "The label of the limit input",
     "type": "text"
   },
-  "cannotBeNegative": "Cannot be negative"
+  "cannotBeNegative": "Cannot be negative",
+  "@cannotBeNegative": {
+    "description": "The message displayed when the limit input is negative",
+    "type": "text"
+  },
+  "exceededTheLimit": "Limit is higher than value in {category} category",
+  "@exceededTheLimit": {
+    "description": "The message displayed when the limit is higher than the value in a category",
+    "type": "text",
+    "placeholders": {
+      "category": {
+        "example": "Food"
+      }
+    }
+  }
 }

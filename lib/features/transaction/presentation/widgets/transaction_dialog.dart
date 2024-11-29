@@ -27,6 +27,27 @@ class TransactionDialog extends StatelessWidget {
   /// [transaction] is the transaction for update.
   final Transaction? transaction;
 
+  void _showLimitMessage(
+    BuildContext context, {
+    required double parsedLimit,
+    required double parsedValue,
+    required TransactionCategory category,
+    required TransactionType type,
+  }) {
+    if (type != TransactionType.expense) {
+      return;
+    }
+    if (parsedLimit < parsedValue) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            context.tr.exceededTheLimit(category.name.split('.').last),
+          ),
+        ),
+      );
+    }
+  }
+
   void _createTransaction(
     BuildContext context, {
     required GlobalKey<FormBuilderState> formKey,
@@ -70,20 +91,13 @@ class TransactionDialog extends StatelessWidget {
 
     context.read<AnalysisBloc>().add(const GetAnalysisEvent());
 
-    if (parsedLimit != null && parsedValue != null) {
-      if (type != TransactionType.expense) {
-        return;
-      }
-      if (parsedLimit < parsedValue) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Limit is higher than value in ${category.name.split('.').last} category',
-            ),
-          ),
-        );
-      }
-    }
+    _showLimitMessage(
+      context,
+      parsedLimit: parsedLimit ?? 0.0,
+      parsedValue: parsedValue ?? 0.0,
+      category: category,
+      type: type,
+    );
   }
 
   void _updateTransaction(
@@ -133,20 +147,13 @@ class TransactionDialog extends StatelessWidget {
 
     context.read<AnalysisBloc>().add(const GetAnalysisEvent());
 
-    if (parsedLimit != null && parsedValue != null) {
-      if (transaction.type != TransactionType.expense) {
-        return;
-      }
-      if (parsedLimit < parsedValue) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Limit is higher than value in ${transaction.category.name.split('.').last} category',
-            ),
-          ),
-        );
-      }
-    }
+    _showLimitMessage(
+      context,
+      parsedLimit: parsedLimit ?? 0.0,
+      parsedValue: parsedValue ?? 0.0,
+      category: transaction.category,
+      type: transaction.type,
+    );
   }
 
   @override
