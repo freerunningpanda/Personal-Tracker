@@ -51,7 +51,7 @@ class AppSnackbar {
         ),
         behavior: SnackBarBehavior.floating,
         margin: EdgeInsets.only(
-          bottom: MediaQuery.of(context).size.height / 1.4,
+          bottom: MediaQuery.of(context).size.height / 1.6,
           left: AppConstants.commonSize24,
           right: AppConstants.commonSize24,
         ),

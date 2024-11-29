@@ -43,14 +43,43 @@ class AnalysisView extends StatelessWidget {
         AnalysisLoaded _ => SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
-                  height: 300,
-                  child: PieChart(
-                    PieChartData(
-                      sections: _getSections(
-                        context,
-                        analysisByCategory: state.analysisByCategory,
+                Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: AppConstants.commonSize24,
+                  ),
+                  child: Text(
+                    'Диаграмма доходов',
+                    style: theme.primaryTextTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: theme.appColors.textColors.mainColor,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: AppConstants.commonSize24,
+                  ),
+                  child: SizedBox(
+                    height: 300,
+                    child: PieChart(
+                      PieChartData(
+                        sections: _getSections(
+                          context,
+                          analysisByCategory: state.analysisByCategory,
+                        ),
                       ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppConstants.commonSize24,
+                  ),
+                  child: Text(
+                    'Доходы и расходы по категориям',
+                    textAlign: TextAlign.center,
+                    style: theme.primaryTextTheme.headlineSmall?.copyWith(
+                      color: theme.appColors.textColors.mainColor,
                     ),
                   ),
                 ),
@@ -64,18 +93,19 @@ class AnalysisView extends StatelessWidget {
                       return ListTile(
                         leading: CircleAvatar(
                           backgroundColor: category.category.getColor(context),
-                          radius: 20,
+                          radius: AppConstants.commonSize20,
+                          child: Icon(
+                            category.category.getIcon(),
+                            color: theme.appColors.textColors.mainColor
+                                .withOpacity(0.8),
+                          ),
                         ),
                         title: Text(
                           category.category.getName(context),
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
                         ),
                         trailing: Text(
-                          '${category.total} \n',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                          '${category.total}',
+                          style: theme.primaryTextTheme.bodyMedium?.copyWith(
                             color: category.total < 0
                                 ? theme.appColors.mainColors.redColor
                                 : theme.appColors.mainColors.greenColor,

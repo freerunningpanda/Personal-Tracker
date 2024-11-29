@@ -8,7 +8,7 @@ void _showLimitMessage(
   required TransactionCategory category,
   required TransactionType type,
 }) {
-  if (type != TransactionType.expense) {
+  if (type != TransactionType.expense || parsedLimit == 0.0) {
     return;
   }
   if (parsedLimit < parsedValue) {
@@ -55,7 +55,7 @@ void _createTransaction(
           category: category,
           type: type,
           createdAt: createdAt,
-          limit: parsedLimit,
+          limit: parsedLimit ?? 0.0,
         ),
       ),
     )
@@ -109,7 +109,7 @@ void _updateTransaction(
           type: transaction.type,
           category: transaction.category,
           updatedAt: updatedAt,
-          limit: parsedLimit,
+          limit: parsedLimit ?? 0.0,
         ),
       ),
     )

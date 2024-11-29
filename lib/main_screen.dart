@@ -118,8 +118,9 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
           ],
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: theme.appColors.mainColors.greenColor,
+        backgroundColor: theme.appColors.mainColors.purpleColor,
         onPressed: () => showDialog<TransactionDialog>(
           context: context,
           builder: (_) => const TransactionDialog(),

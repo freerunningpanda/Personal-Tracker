@@ -34,6 +34,10 @@ class _MainColors extends MainColors {
           redColor: const Color(0xFFE57373),
           blueColor: const Color(0xFF64B5F6),
           blackColor: const Color(0xFF000000),
+          orangeColor: const Color(0xFFFFB74D),
+          yellowColor: const Color(0xFFFFD54F),
+          purpleColor: const Color(0xFF9575CD),
+          pinkColor: const Color(0xFFFF8A80),
         );
 }
 

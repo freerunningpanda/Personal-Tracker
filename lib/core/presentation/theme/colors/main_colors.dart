@@ -9,6 +9,10 @@ abstract class MainColors {
     required this.blueColor,
     required this.redColor,
     required this.blackColor,
+    required this.orangeColor,
+    required this.yellowColor,
+    required this.purpleColor,
+    required this.pinkColor,
   });
 
   /// [greenColor] getter.
@@ -22,4 +26,16 @@ abstract class MainColors {
 
   /// [blackColor] getter.
   final Color blackColor;
+
+  /// [orangeColor] getter.
+  final Color orangeColor;
+
+  /// [yellowColor] getter.
+  final Color yellowColor;
+
+  /// [purpleColor] getter.
+  final Color purpleColor;
+
+  /// [pinkColor] getter.
+  final Color pinkColor;
 }

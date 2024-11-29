@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tracker/core/presentation/theme/app_theme.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 
 /// [TransactionCategory] is an enum class.
@@ -48,16 +49,16 @@ enum TransactionCategory {
   /// [getColor] method.
   /// Returns the color of the category.
   Color? getColor(BuildContext context) {
-    // final color = context.theme.appColors.mainColors;
+    final color = context.theme.appColors.mainColors;
 
     return switch (this) {
-      food => Colors.orange,
-      travelling => Colors.blue,
-      transport => Colors.purple,
-      shopping => Colors.green,
-      health => Colors.red,
-      entertainment => Colors.yellow,
-      education => Colors.pink,
+      food => color.orangeColor,
+      travelling => color.blueColor,
+      transport => color.purpleColor,
+      shopping => color.greenColor,
+      health => color.redColor,
+      entertainment => color.yellowColor,
+      education => color.pinkColor,
       _ => null,
     };
   }
