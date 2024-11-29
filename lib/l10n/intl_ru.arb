@@ -105,7 +105,7 @@
     "description": "Сообщение, отображаемое при отрицательном значении лимита",
     "type": "text"
   },
-  "exceededTheLimit": "Лимит превышен для категории {category}",
+  "exceededTheLimit": "Лимит превышен для категории: '{category}'",
   "@exceededTheLimit": {
     "description": "Сообщение, отображаемое при превышении лимита для категории",
     "type": "text",

@@ -3,9 +3,13 @@ import 'package:tracker/core/constants/app_constants.dart';
 import 'package:tracker/core/presentation/theme/app_theme.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 
+/// [AppSnackbar] is a class.
+/// That contains the method to show the snackbar.
 class AppSnackbar {
   AppSnackbar._();
 
+  /// [show] method.
+  /// Shows the snackbar.
   static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> show(
     BuildContext context, {
     required String title,

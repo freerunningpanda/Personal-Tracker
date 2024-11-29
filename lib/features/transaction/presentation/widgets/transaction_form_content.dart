@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -134,18 +132,63 @@ class TransactionFormContent extends StatelessWidget {
   }
 }
 
+/// [TransactionDropdowns] is a class.
+/// That extends [StatelessWidget] and builds the transaction dropdowns.
 class TransactionDropdowns extends StatelessWidget {
-  final Transaction? transaction;
+  /// [TransactionDropdowns] constructor.
   const TransactionDropdowns({
     this.transaction,
     super.key,
   });
 
-  @override
-  Widget build(BuildContext context) {
+  /// [TransactionDropdowns] constructor.
+  final Transaction? transaction;
+
+  void _onChangedType(BuildContext context, {required TransactionType? type}) {
     final formCubit = context.read<FormCubit>();
     final transactionBloc = context.read<TransactionBloc>();
+
+    if (transaction != null) {
+      transactionBloc.add(
+        EditTransactionEvent(
+          transaction: transaction!.copyWith(type: type),
+        ),
+      );
+
+      return;
+    }
+    formCubit.setType(
+      type: type,
+    );
+  }
+
+  void _onChangedCategory(
+    BuildContext context, {
+    required TransactionCategory? category,
+  }) {
+    final formCubit = context.read<FormCubit>();
+    final transactionBloc = context.read<TransactionBloc>();
+
+    if (transaction != null) {
+      transactionBloc.add(
+        EditTransactionEvent(
+          transaction: transaction!.copyWith(
+            category: category,
+          ),
+        ),
+      );
+
+      return;
+    }
+    formCubit.setCategory(
+      category: category,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final theme = context.theme;
+    final formCubit = context.read<FormCubit>();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -175,22 +218,10 @@ class TransactionDropdowns extends StatelessWidget {
                       ),
                     )
                     .toList(),
-                onChanged: (type) {
-                  if (transaction != null) {
-                    transactionBloc.add(
-                      EditTransactionEvent(
-                        transaction: transaction!.copyWith(type: type),
-                      ),
-                    );
-
-                    return;
-                  }
-                  formCubit.setType(
-                    type: type,
-                  );
-
-                  log('Type: $type');
-                },
+                onChanged: (type) => _onChangedType(
+                  context,
+                  type: type,
+                ),
               ),
             ],
           ),
@@ -214,23 +245,10 @@ class TransactionDropdowns extends StatelessWidget {
                 ),
               )
               .toList(),
-          onChanged: (category) {
-            if (transaction != null) {
-              context.read<TransactionBloc>().add(
-                    EditTransactionEvent(
-                      transaction: transaction!.copyWith(
-                        category: category,
-                      ),
-                    ),
-                  );
-
-              return;
-            }
-            formCubit.setCategory(
-              category: category,
-            );
-            log('Category: $category');
-          },
+          onChanged: (category) => _onChangedCategory(
+            context,
+            category: category,
+          ),
         ),
       ],
     );

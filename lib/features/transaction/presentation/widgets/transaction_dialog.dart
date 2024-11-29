@@ -28,6 +28,7 @@ class TransactionDialog extends StatelessWidget {
   /// [transaction] is the transaction for update.
   final Transaction? transaction;
 
+  /// shows a message if the limit is exceeded
   void _showLimitMessage(
     BuildContext context, {
     required double parsedLimit,
@@ -42,11 +43,14 @@ class TransactionDialog extends StatelessWidget {
       AppSnackbar.show(
         context,
         title: context.tr.attention,
-        message: context.tr.exceededTheLimit(category.name.split('.').last),
+        message: context.tr.exceededTheLimit(
+          category.getName(context),
+        ),
       );
     }
   }
 
+  /// creates a transaction
   void _createTransaction(
     BuildContext context, {
     required GlobalKey<FormBuilderState> formKey,
@@ -99,6 +103,7 @@ class TransactionDialog extends StatelessWidget {
     );
   }
 
+  /// updates a transaction
   void _updateTransaction(
     BuildContext context, {
     required GlobalKey<FormBuilderState> formKey,
