@@ -43,7 +43,11 @@ void _initTransactions() {
       ),
     )
     ..registerLazySingleton<TransactionBloc>(
-      () => TransactionBloc(sl(), sl()),
+      () => TransactionBloc(
+        sl(),
+        sl(),
+        sl(),
+      ),
     )
     ..registerLazySingleton<FiltersBloc>(FiltersBloc.new)
     ..registerFactory(FormCubit.new)
