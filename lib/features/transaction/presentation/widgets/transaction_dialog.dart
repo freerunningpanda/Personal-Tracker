@@ -69,6 +69,21 @@ class TransactionDialog extends StatelessWidget {
       ..maybePop();
 
     context.read<AnalysisBloc>().add(const GetAnalysisEvent());
+
+    if (parsedLimit != null && parsedValue != null) {
+      if (type != TransactionType.expense) {
+        return;
+      }
+      if (parsedLimit < parsedValue) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Limit is higher than value in ${category.name.split('.').last} category',
+            ),
+          ),
+        );
+      }
+    }
   }
 
   void _updateTransaction(
@@ -117,6 +132,21 @@ class TransactionDialog extends StatelessWidget {
       ..maybePop();
 
     context.read<AnalysisBloc>().add(const GetAnalysisEvent());
+
+    if (parsedLimit != null && parsedValue != null) {
+      if (transaction.type != TransactionType.expense) {
+        return;
+      }
+      if (parsedLimit < parsedValue) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Limit is higher than value in ${transaction.category.name.split('.').last} category',
+            ),
+          ),
+        );
+      }
+    }
   }
 
   @override

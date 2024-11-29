@@ -32,7 +32,6 @@ class TransactionFormContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final titleFocusNode = FocusNode();
     final valueFocusNode = FocusNode();
-    final localCubit = context.read<FormCubit>();
     final dateFormat = DateTimeHelper.dateFormat;
     final now = DateTime.now();
 
@@ -94,7 +93,7 @@ class TransactionFormContent extends StatelessWidget {
               final numValue = double.tryParse(value ?? '');
               if (numValue != null) {
                 if (numValue < 0) {
-                  return 'Cannot be negative';
+                  return context.tr.cannotBeNegative;
                 }
               }
               return null;

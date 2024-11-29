@@ -249,6 +249,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Cannot be negative`
+  String get cannotBeNegative {
+    return Intl.message(
+      'Cannot be negative',
+      name: 'cannotBeNegative',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

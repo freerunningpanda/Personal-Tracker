@@ -99,5 +99,6 @@
   "@limit": {
     "description": "The label of the limit input",
     "type": "text"
-  }
+  },
+  "cannotBeNegative": "Cannot be negative"
 }
