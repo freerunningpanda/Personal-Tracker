@@ -10,7 +10,6 @@ import 'package:tracker/core/helpers/date_time_helper.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 import 'package:tracker/features/transaction/domain/entities/transaction.dart';
 import 'package:tracker/features/transaction/presentation/bloc/transaction_bloc/transaction_bloc.dart';
-import 'package:tracker/features/transaction/presentation/bloc/transactions_bloc/transactions_bloc.dart';
 import 'package:tracker/features/transaction/presentation/cubit/form_cubit.dart';
 
 /// [TransactionFormContent] is a class.
@@ -118,7 +117,7 @@ class TransactionDropdowns extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: AppConstants.commonSize16),
           child: DropdownButton<TransactionType>(
-            value: transaction?.type,
+            value: transaction?.type ?? formCubit.state.type,
             items: TransactionType.values
                 .where((type) => type != TransactionType.all)
                 .map(
@@ -147,7 +146,7 @@ class TransactionDropdowns extends StatelessWidget {
           ),
         ),
         DropdownButton<TransactionCategory>(
-          value: transaction?.category,
+          value: transaction?.category ?? formCubit.state.category,
           items: TransactionCategory.values
               .where((category) => category != TransactionCategory.all)
               .toList()
