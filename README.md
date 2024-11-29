@@ -33,6 +33,7 @@ An application that allows you to keep records of income and expenses in various
   
 **Statistics on expenses and income**</br>
 **Saving data**</br>
+**Supports Russian and English languages**
 
 
 ## How to Run
