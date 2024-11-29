@@ -1,7 +1,5 @@
 <h1 align="center">Personal Tracker</h1> 
 
-![Описание](assets/icon.png)
-
 <p align="center">
 </p>
 
