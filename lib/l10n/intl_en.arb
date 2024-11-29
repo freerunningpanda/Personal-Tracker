@@ -119,5 +119,75 @@
   "@attention": {
     "description": "The title of the attention message",
     "type": "text"
+  },
+  "expense": "expense",
+  "@expense": {
+    "description": "The label of the expense radio button",
+    "type": "text"
+  },
+  "income": "income",
+  "@income": {
+    "description": "The label of the income radio button",
+    "type": "text"
+  },
+  "all": "context.tr.all",
+  "@all": {
+    "description": "The label of the all radio button",
+    "type": "text"
+  },
+  "food": "Food",
+  "@food": {
+    "description": "The label of the food category",
+    "type": "text"
+  },
+  "travelling": "Travelling",
+  "@travelling": {
+    "description": "The label of the travelling category",
+    "type": "text"
+  },
+  "transport": "Transport",
+  "@transport": {
+    "description": "The label of the transport category",
+    "type": "text"
+  },
+  "shopping": "Shopping",
+  "@shopping": {
+    "description": "The label of the shopping category",
+    "type": "text"
+  },
+  "health": "Health",
+  "@health": {
+    "description": "The label of the health category",
+    "type": "text"
+  },
+  "entertainment": "Entertainment",
+  "@entertainment": {
+    "description": "The label of the entertainment category",
+    "type": "text"
+  },
+  "education": "Education",
+  "@education": {
+    "description": "The label of the education category",
+    "type": "text"
+  },
+  "other": "Other",
+  "@other": {
+    "description": "The label of the other category",
+    "type": "text"
+  },
+  "category": "Category:",
+  "@category": {
+    "description": "The label of the category input",
+    "type": "text"
+  },
+  "type": "Type:",
+  "@type": {
+    "description": "The label of the type input",
+    "type": "text"
+  },
+  "amount": "Amount:",
+  "@amount": {
+    "description": "The label of the amount input",
+    "type": "text"
   }
 }

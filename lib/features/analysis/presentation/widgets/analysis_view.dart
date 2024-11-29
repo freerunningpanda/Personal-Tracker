@@ -67,7 +67,7 @@ class AnalysisView extends StatelessWidget {
                           radius: 20,
                         ),
                         title: Text(
-                          category.category.toString().split('.').last,
+                          category.category.getName(context),
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -116,7 +116,7 @@ class AnalysisView extends StatelessWidget {
           (category) => PieChartSectionData(
             color: category.category.getColor(context),
             value: category.total,
-            title: category.category.toString().split('.').last,
+            title: category.category.getName(context),
             radius: radius,
             titleStyle: TextStyle(
               fontSize: AppConstants.commonSize16,

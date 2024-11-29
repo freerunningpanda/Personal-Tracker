@@ -280,6 +280,146 @@ class S {
       args: [],
     );
   }
+
+  /// `expense`
+  String get expense {
+    return Intl.message(
+      'expense',
+      name: 'expense',
+      desc: 'The label of the expense radio button',
+      args: [],
+    );
+  }
+
+  /// `income`
+  String get income {
+    return Intl.message(
+      'income',
+      name: 'income',
+      desc: 'The label of the income radio button',
+      args: [],
+    );
+  }
+
+  /// `context.tr.all`
+  String get all {
+    return Intl.message(
+      'context.tr.all',
+      name: 'all',
+      desc: 'The label of the all radio button',
+      args: [],
+    );
+  }
+
+  /// `Food`
+  String get food {
+    return Intl.message(
+      'Food',
+      name: 'food',
+      desc: 'The label of the food category',
+      args: [],
+    );
+  }
+
+  /// `Travelling`
+  String get travelling {
+    return Intl.message(
+      'Travelling',
+      name: 'travelling',
+      desc: 'The label of the travelling category',
+      args: [],
+    );
+  }
+
+  /// `Transport`
+  String get transport {
+    return Intl.message(
+      'Transport',
+      name: 'transport',
+      desc: 'The label of the transport category',
+      args: [],
+    );
+  }
+
+  /// `Shopping`
+  String get shopping {
+    return Intl.message(
+      'Shopping',
+      name: 'shopping',
+      desc: 'The label of the shopping category',
+      args: [],
+    );
+  }
+
+  /// `Health`
+  String get health {
+    return Intl.message(
+      'Health',
+      name: 'health',
+      desc: 'The label of the health category',
+      args: [],
+    );
+  }
+
+  /// `Entertainment`
+  String get entertainment {
+    return Intl.message(
+      'Entertainment',
+      name: 'entertainment',
+      desc: 'The label of the entertainment category',
+      args: [],
+    );
+  }
+
+  /// `Education`
+  String get education {
+    return Intl.message(
+      'Education',
+      name: 'education',
+      desc: 'The label of the education category',
+      args: [],
+    );
+  }
+
+  /// `Other`
+  String get other {
+    return Intl.message(
+      'Other',
+      name: 'other',
+      desc: 'The label of the other category',
+      args: [],
+    );
+  }
+
+  /// `Category:`
+  String get category {
+    return Intl.message(
+      'Category:',
+      name: 'category',
+      desc: 'The label of the category input',
+      args: [],
+    );
+  }
+
+  /// `Type:`
+  String get type {
+    return Intl.message(
+      'Type:',
+      name: 'type',
+      desc: 'The label of the type input',
+      args: [],
+    );
+  }
+
+  /// `Amount:`
+  String get amount {
+    return Intl.message(
+      'Amount:',
+      name: 'amount',
+      desc: 'The label of the amount input',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -288,6 +428,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ru'),
     ];
   }
 

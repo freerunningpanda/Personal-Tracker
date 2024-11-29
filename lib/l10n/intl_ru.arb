@@ -1,0 +1,193 @@
+{
+  "@@locale": "ru",
+  "transactions": "Транзакции",
+  "@transactions": {
+    "description": "Заголовок страницы транзакций",
+    "type": "text"
+  },
+  "analytics": "Аналитика",
+  "@analytics": {
+    "description": "Заголовок страницы аналитики",
+    "type": "text"
+  },
+  "noTransactionsYet": "Пока нет транзакций",
+  "@noTransactionsYet": {
+    "description": "Сообщение, отображаемое при отсутствии транзакций",
+    "type": "text"
+  },
+  "updateATransaction": "Обновить транзакцию",
+  "@updateATransaction": {
+    "description": "Заголовок страницы обновления транзакции",
+    "type": "text"
+  },
+  "createATransaction": "Добавить транзакцию",
+  "@createATransaction": {
+    "description": "Заголовок страницы создания транзакции",
+    "type": "text"
+  },
+  "create": "Создать",
+  "@create": {
+    "description": "Текст кнопки создания",
+    "type": "text"
+  },
+  "update": "Обновить",
+  "@update": {
+    "description": "Текст кнопки обновления",
+    "type": "text"
+  },
+  "value": "Значение",
+  "@value": {
+    "description": "Метка для ввода значения",
+    "type": "text"
+  },
+  "pleaseEnterAValue": "Пожалуйста, введите значение",
+  "@pleaseEnterAValue": {
+    "description": "Сообщение, отображаемое при пустом вводе значения",
+    "type": "text"
+  },
+  "date": "Дата",
+  "@date": {
+    "description": "Метка для ввода даты",
+    "type": "text"
+  },
+  "title": "Название",
+  "@title": {
+    "description": "Метка для ввода названия",
+    "type": "text"
+  },
+  "pleaseEnterATitle": "Пожалуйста, введите название",
+  "@pleaseEnterATitle": {
+    "description": "Сообщение, отображаемое при пустом вводе названия",
+    "type": "text"
+  },
+  "fromLess": "от меньшего",
+  "@fromLess": {
+    "description": "Метка для ввода \"от меньшего\"",
+    "type": "text"
+  },
+  "fromMore": "от большего",
+  "@fromMore": {
+    "description": "Метка для ввода \"от большего\"",
+    "type": "text"
+  },
+  "apply": "Применить",
+  "@apply": {
+    "description": "Текст кнопки применения",
+    "type": "text"
+  },
+  "search": "Поиск",
+  "@search": {
+    "description": "Текст кнопки поиска",
+    "type": "text"
+  },
+  "addSome": "добавьте что-то...",
+  "@addSome": {
+    "description": "Текст кнопки добавления",
+    "type": "text"
+  },
+  "analysisIsEmpty": "Анализ пуст",
+  "@analysisIsEmpty": {
+    "description": "Сообщение, отображаемое при отсутствии анализа",
+    "type": "text"
+  },
+  "pleaseAddSomeTransactions": "Пожалуйста, добавьте транзакции",
+  "@pleaseAddSomeTransactions": {
+    "description": "Сообщение, отображаемое при отсутствии транзакций",
+    "type": "text"
+  },
+  "limit": "Лимит",
+  "@limit": {
+    "description": "Метка для ввода лимита",
+    "type": "text"
+  },
+  "cannotBeNegative": "Не может быть отрицательным",
+  "@cannotBeNegative": {
+    "description": "Сообщение, отображаемое при отрицательном значении лимита",
+    "type": "text"
+  },
+  "exceededTheLimit": "Лимит превышен для категории {category}",
+  "@exceededTheLimit": {
+    "description": "Сообщение, отображаемое при превышении лимита для категории",
+    "type": "text",
+    "placeholders": {
+      "category": {
+        "example": "Еда"
+      }
+    }
+  },
+  "attention": "Внимание!",
+  "@attention": {
+    "description": "Заголовок сообщения \"Внимание\"",
+    "type": "text"
+  },
+  "expense": "затраты",
+  "@expense": {
+    "description": "Метка для радиокнопки затрат",
+    "type": "text"
+  },
+  "income": "доходы",
+  "@income": {
+    "description": "Метка для радиокнопки доходов",
+    "type": "text"
+  },
+  "all": "все",
+  "@all": {
+    "description": "Текст 'все'",
+    "type": "text"
+  },
+  "food": "Еда",
+  "@food": {
+    "description": "Текст категории 'Еда'",
+    "type": "text"
+  },
+  "travelling": "Путешествия",
+  "@travelling": {
+    "description": "Текст категории 'Путешествия'",
+    "type": "text"
+  },
+  "transport": "Транспорт",
+  "@transport": {
+    "description": "Текст категории 'Транспорт'",
+    "type": "text"
+  },
+  "shopping": "Покупки",
+  "@shopping": {
+    "description": "Текст категории 'Покупки'",
+    "type": "text"
+  },
+  "health": "Здоровье",
+  "@health": {
+    "description": "Текст категории 'Здоровье'",
+    "type": "text"
+  },
+  "entertainment": "Развлечения",
+  "@entertainment": {
+    "description": "Текст категории 'Развлечения'",
+    "type": "text"
+  },
+  "education": "Образование",
+  "@education": {
+    "description": "Текст категории 'Образование'",
+    "type": "text"
+  },
+  "other": "Другое",
+  "@other": {
+    "description": "Текст категории 'Другое'",
+    "type": "text"
+  },
+  "category": "Категория:",
+  "@category": {
+    "description": "Текст 'Категория'",
+    "type": "text"
+  },
+  "type": "Тип:",
+  "@type": {
+    "description": "Текст 'Тип'",
+    "type": "text"
+  },
+  "amount": "Сумма:",
+  "@amount": {
+    "description": "Текст 'Сумма'",
+    "type": "text"
+  }
+}

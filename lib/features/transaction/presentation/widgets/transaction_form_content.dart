@@ -132,7 +132,7 @@ class TransactionDropdowns extends StatelessWidget {
                 .map(
                   (type) => DropdownMenuItem(
                     value: type,
-                    child: Text(type.toString().split('.').last),
+                    child: Text(type.getName(context)),
                   ),
                 )
                 .toList(),
@@ -162,7 +162,7 @@ class TransactionDropdowns extends StatelessWidget {
               .map(
                 (category) => DropdownMenuItem(
                   value: category,
-                  child: Text(category.toString().split('.').last),
+                  child: Text(category.getName(context)),
                 ),
               )
               .toList(),

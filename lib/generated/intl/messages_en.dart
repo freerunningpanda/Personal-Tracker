@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addSome": MessageLookupByLibrary.simpleMessage("add some..."),
+        "all": MessageLookupByLibrary.simpleMessage("context.tr.all"),
+        "amount": MessageLookupByLibrary.simpleMessage("Amount:"),
         "analysisIsEmpty":
             MessageLookupByLibrary.simpleMessage("Analysis is empty"),
         "analytics": MessageLookupByLibrary.simpleMessage("Analytics"),
@@ -33,16 +35,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "attention": MessageLookupByLibrary.simpleMessage("Attention!"),
         "cannotBeNegative":
             MessageLookupByLibrary.simpleMessage("Cannot be negative"),
+        "category": MessageLookupByLibrary.simpleMessage("Category:"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "createATransaction":
             MessageLookupByLibrary.simpleMessage("Add a transaction"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
+        "education": MessageLookupByLibrary.simpleMessage("Education"),
+        "entertainment": MessageLookupByLibrary.simpleMessage("Entertainment"),
         "exceededTheLimit": m0,
+        "expense": MessageLookupByLibrary.simpleMessage("expense"),
+        "food": MessageLookupByLibrary.simpleMessage("Food"),
         "fromLess": MessageLookupByLibrary.simpleMessage("from less"),
         "fromMore": MessageLookupByLibrary.simpleMessage("from more"),
+        "health": MessageLookupByLibrary.simpleMessage("Health"),
+        "income": MessageLookupByLibrary.simpleMessage("income"),
         "limit": MessageLookupByLibrary.simpleMessage("Limit"),
         "noTransactionsYet":
             MessageLookupByLibrary.simpleMessage("No transactions yet"),
+        "other": MessageLookupByLibrary.simpleMessage("Other"),
         "pleaseAddSomeTransactions": MessageLookupByLibrary.simpleMessage(
             "Please add some transactions"),
         "pleaseEnterATitle":
@@ -50,8 +60,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseEnterAValue":
             MessageLookupByLibrary.simpleMessage("Please enter a value"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "shopping": MessageLookupByLibrary.simpleMessage("Shopping"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "transactions": MessageLookupByLibrary.simpleMessage("Transactions"),
+        "transport": MessageLookupByLibrary.simpleMessage("Transport"),
+        "travelling": MessageLookupByLibrary.simpleMessage("Travelling"),
+        "type": MessageLookupByLibrary.simpleMessage("Type:"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "updateATransaction":
             MessageLookupByLibrary.simpleMessage("Update a transaction"),

@@ -25,4 +25,12 @@ enum TransactionType {
       _ => null,
     };
   }
+
+  /// [getName] method.
+  /// Returns the name of the transaction type.
+  String getName(BuildContext context) => switch (this) {
+        expense => context.tr.expense,
+        income => context.tr.income,
+        _ => context.tr.all,
+      };
 }

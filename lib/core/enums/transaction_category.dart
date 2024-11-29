@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 
 /// [TransactionCategory] is an enum class.
 /// Contains all the categories of transactions.
@@ -60,4 +61,18 @@ enum TransactionCategory {
       _ => null,
     };
   }
+
+  /// [getName] method.
+  /// Returns the name of the category.
+  String getName(BuildContext context) => switch (this) {
+        food => context.tr.food,
+        travelling => context.tr.travelling,
+        transport => context.tr.transport,
+        shopping => context.tr.shopping,
+        health => context.tr.health,
+        entertainment => context.tr.entertainment,
+        education => context.tr.education,
+        other => context.tr.other,
+        _ => context.tr.all,
+      };
 }

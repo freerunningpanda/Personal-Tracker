@@ -31,7 +31,7 @@ class FiltersDialog extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Category:',
+              context.tr.category,
               style: theme.primaryTextTheme.bodyLarge?.copyWith(
                 color: theme.appColors.textColors.mainColor,
               ),
@@ -43,7 +43,7 @@ class FiltersDialog extends StatelessWidget {
                   .map(
                     (category) => DropdownMenuItem(
                       value: category,
-                      child: Text(category.toString().split('.').last),
+                      child: Text(category.getName(context)),
                     ),
                   )
                   .toList(),
@@ -51,7 +51,7 @@ class FiltersDialog extends StatelessWidget {
                   bloc.add(SetFiltersEvent(category: category)),
             ),
             Text(
-              'Type:',
+              context.tr.type,
               style: theme.primaryTextTheme.bodyLarge?.copyWith(
                 color: theme.appColors.textColors.mainColor,
               ),
@@ -63,7 +63,7 @@ class FiltersDialog extends StatelessWidget {
                   .map(
                     (type) => DropdownMenuItem(
                       value: type,
-                      child: Text(type.toString().split('.').last),
+                      child: Text(type.getName(context)),
                     ),
                   )
                   .toList(),
@@ -84,7 +84,7 @@ class FiltersDialog extends StatelessWidget {
                 top: AppConstants.commonSize16,
               ),
               child: Text(
-                'Amount:',
+                context.tr.amount,
                 style: theme.primaryTextTheme.bodyLarge?.copyWith(
                   color: theme.appColors.textColors.mainColor,
                 ),
@@ -125,6 +125,9 @@ class FiltersDialog extends StatelessWidget {
             onPressed: () => Navigator.of(context).pop(),
             child: Text(
               MaterialLocalizations.of(context).cancelButtonLabel,
+              style: theme.primaryTextTheme.bodyMedium?.copyWith(
+                color: theme.appColors.textColors.mainColor,
+              ),
             ),
           ),
           TextButton(
@@ -142,7 +145,12 @@ class FiltersDialog extends StatelessWidget {
                   );
               context.maybePop();
             },
-            child: Text(context.tr.apply),
+            child: Text(
+              context.tr.apply,
+              style: theme.primaryTextTheme.bodyMedium?.copyWith(
+                color: theme.appColors.textColors.mainColor,
+              ),
+            ),
           ),
         ],
       ),
