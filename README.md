@@ -1,7 +1,19 @@
 <h1 align="center">Personal Tracker</h1> 
 
 <p align="center">
+
+<img src="assets/screenshots/1.png" width="23%"></img>
+<img src="assets/screenshots/2.png" width="23%"></img>
+<img src="assets/screenshots/3.png" width="23%"></img>
 </p>
+
+<p align="center">
+
+<img src="assets/screenshots/4.png" width="23%"></img>
+<img src="assets/screenshots/5.png" width="23%"></img>
+<img src="assets/screenshots/6.png" width="23%"></img>
+</p>
+
 
 
 # Personal Tracker
