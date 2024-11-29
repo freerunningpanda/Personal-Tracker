@@ -45,7 +45,9 @@ class FiltersDialog extends StatelessWidget {
               ),
               onChanged: (date) => bloc.add(SetFiltersEvent(date: date)),
             ),
-            const FiltersAmountSelector(),
+            FiltersAmountSelector(
+              selectedOption: state.selectedOption,
+            ),
           ],
         ),
         actions: [

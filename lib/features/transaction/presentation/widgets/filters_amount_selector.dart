@@ -11,8 +11,12 @@ import 'package:tracker/features/transaction/presentation/bloc/filters_bloc/filt
 class FiltersAmountSelector extends StatelessWidget {
   /// [FiltersAmountSelector] constructor.
   const FiltersAmountSelector({
+    required this.selectedOption,
     super.key,
   });
+
+  /// [selectedOption] is the selected option.
+  final String? selectedOption;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +42,7 @@ class FiltersAmountSelector extends StatelessWidget {
           title: Text(context.tr.fromLess),
           leading: Radio<String>(
             value: context.tr.fromLess,
-            groupValue: bloc.state.selectedOption,
+            groupValue: selectedOption,
             onChanged: (value) => bloc.add(
               SetFiltersEvent(
                 valueFilter: ValueFilter.less,
@@ -52,7 +56,7 @@ class FiltersAmountSelector extends StatelessWidget {
           title: Text(context.tr.fromMore),
           leading: Radio<String>(
             value: context.tr.fromMore,
-            groupValue: bloc.state.selectedOption,
+            groupValue: selectedOption,
             onChanged: (value) => bloc.add(
               SetFiltersEvent(
                 valueFilter: ValueFilter.more,
