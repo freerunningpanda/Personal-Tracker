@@ -6,8 +6,8 @@ import 'package:tracker/core/presentation/widgets/app_tap_bar.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 import 'package:tracker/features/analysis/presentation/widgets/analysis_view.dart';
 import 'package:tracker/features/transaction/presentation/bloc/transactions_bloc/transactions_bloc.dart';
+import 'package:tracker/features/transaction/presentation/utils/core.dart';
 import 'package:tracker/features/transaction/presentation/widgets/top_controls.dart';
-import 'package:tracker/features/transaction/presentation/widgets/transaction_dialog.dart';
 import 'package:tracker/features/transaction/presentation/widgets/transactions_view.dart';
 
 /// [MainScreen] is a class.
