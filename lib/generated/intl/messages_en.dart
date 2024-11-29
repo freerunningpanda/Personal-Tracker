@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Analysis is empty"),
         "analytics": MessageLookupByLibrary.simpleMessage("Analytics"),
         "apply": MessageLookupByLibrary.simpleMessage("Apply"),
+        "attention": MessageLookupByLibrary.simpleMessage("Attention!"),
         "cannotBeNegative":
             MessageLookupByLibrary.simpleMessage("Cannot be negative"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),

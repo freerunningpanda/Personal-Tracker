@@ -270,6 +270,16 @@ class S {
       args: [category],
     );
   }
+
+  /// `Attention!`
+  String get attention {
+    return Intl.message(
+      'Attention!',
+      name: 'attention',
+      desc: 'The title of the attention message',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

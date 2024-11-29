@@ -114,5 +114,10 @@
         "example": "Food"
       }
     }
+  },
+  "attention": "Attention!",
+  "@attention": {
+    "description": "The title of the attention message",
+    "type": "text"
   }
 }

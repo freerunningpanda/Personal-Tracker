@@ -26,9 +26,15 @@ class AppConstants {
   /// [commonSize16] is the common size used in the app.
   static const commonSize16 = 16.0;
 
+  /// [commonSize20] is the common size used in the app.
+  static const commonSize20 = 20.0;
+
   /// [commonSize12] is the common size used in the app.
   static const commonSize12 = 12.0;
 
   /// [commonSize4] is the common size used in the app.
   static const commonSize4 = 4.0;
+
+  /// [commonSize2] is the common size used in the app.
+  static const commonSize2 = 2.0;
 }

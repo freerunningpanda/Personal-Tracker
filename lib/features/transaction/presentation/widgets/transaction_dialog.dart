@@ -6,6 +6,7 @@ import 'package:tracker/core/constants/app_constants.dart';
 import 'package:tracker/core/enums/transaction_category.dart';
 import 'package:tracker/core/enums/transaction_type.dart';
 import 'package:tracker/core/presentation/theme/app_theme.dart';
+import 'package:tracker/core/presentation/widgets/app_snackbar.dart';
 import 'package:tracker/core/utils/extensions/build_context_ext.dart';
 import 'package:tracker/features/analysis/presentation/bloc/analysis_bloc.dart';
 import 'package:tracker/features/transaction/domain/entities/transaction.dart';
@@ -38,12 +39,10 @@ class TransactionDialog extends StatelessWidget {
       return;
     }
     if (parsedLimit < parsedValue) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            context.tr.exceededTheLimit(category.name.split('.').last),
-          ),
-        ),
+      AppSnackbar.show(
+        context,
+        title: context.tr.attention,
+        message: context.tr.exceededTheLimit(category.name.split('.').last),
       );
     }
   }
