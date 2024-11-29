@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:tracker/core/data/datasources/local/local_datasource.dart';
 import 'package:tracker/core/output/result.dart';
 import 'package:tracker/features/transaction/data/models/transaction_model.dart';
@@ -30,8 +28,6 @@ class TransactionRepositoryImpl implements TransactionRepository {
         ),
       );
 
-      log('Transaction created: ${params.transaction}');
-
       return Success();
     } catch (e) {
       return Failure(e.toString());
@@ -54,8 +50,6 @@ class TransactionRepositoryImpl implements TransactionRepository {
     try {
       _transactions.clear();
       final transactions = await _localDatasource.getTransactions();
-
-      log('Transactions fetched: $transactions');
 
       _transactions.addAll(transactions);
 
@@ -88,8 +82,6 @@ class TransactionRepositoryImpl implements TransactionRepository {
       _transactions.clear();
       final transactions =
           await _localDatasource.getFilteredTransactions(params);
-
-      log('Params: $params');
 
       _transactions.addAll(transactions);
 

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracker/features/transaction/domain/entities/transaction.dart';
@@ -32,11 +30,8 @@ class TransactionBloc extends Bloc<TranscationEvent, TransactionState> {
   Future<void> _onEditTransactionEvent(
     EditTransactionEvent event,
     _Emit emit,
-  ) async {
-    emit(TransactionState(transaction: event.transaction));
-
-    log('Edited transaction: ${event.transaction}');
-  }
+  ) async =>
+      emit(TransactionState(transaction: event.transaction));
 
   Future<void> _onUpdateTransaction(
     UpdateTransactionEvent event,
