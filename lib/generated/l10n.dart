@@ -239,6 +239,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Limit`
+  String get limit {
+    return Intl.message(
+      'Limit',
+      name: 'limit',
+      desc: 'The label of the limit input',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

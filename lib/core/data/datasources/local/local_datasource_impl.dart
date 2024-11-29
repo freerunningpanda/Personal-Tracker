@@ -35,6 +35,7 @@ class LocalDatasourceImpl implements LocalDatasource {
               type: transaction.type,
               category: transaction.category,
               createdAt: Value(transaction.createdAt ?? DateTime.now()),
+              limit: Value(transaction.limit),
             ),
           );
 
@@ -60,6 +61,7 @@ class LocalDatasourceImpl implements LocalDatasource {
           updatedAt: Value(
             transaction.updatedAt ?? DateTime.now(),
           ),
+          limit: Value(transaction.limit),
         ),
       );
     }

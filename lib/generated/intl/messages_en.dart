@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "fromLess": MessageLookupByLibrary.simpleMessage("from less"),
         "fromMore": MessageLookupByLibrary.simpleMessage("from more"),
+        "limit": MessageLookupByLibrary.simpleMessage("Limit"),
         "noTransactionsYet":
             MessageLookupByLibrary.simpleMessage("No transactions yet"),
         "pleaseAddSomeTransactions": MessageLookupByLibrary.simpleMessage(

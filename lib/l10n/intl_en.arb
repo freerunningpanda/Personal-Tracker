@@ -94,5 +94,10 @@
   "@pleaseAddSomeTransactions": {
     "description": "The message displayed when there are no transactions",
     "type": "text"
+  },
+  "limit": "Limit",
+  "@limit": {
+    "description": "The label of the limit input",
+    "type": "text"
   }
 }

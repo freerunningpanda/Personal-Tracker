@@ -11,6 +11,7 @@ class Transaction extends Equatable {
     required this.value,
     required this.type,
     required this.category,
+    this.limit,
     this.id,
     this.createdAt,
     this.updatedAt,
@@ -37,6 +38,9 @@ class Transaction extends Equatable {
   /// [updatedAt] is the date of the last update of the transaction.
   final DateTime? updatedAt;
 
+  /// [limit] is the limit of the transaction.
+  final double? limit;
+
   @override
   List<Object?> get props => [
         id,
@@ -46,6 +50,7 @@ class Transaction extends Equatable {
         category,
         createdAt,
         updatedAt,
+        limit,
       ];
 
   /// [copyWith] method is used to create a new instance of [Transaction].
@@ -58,6 +63,7 @@ class Transaction extends Equatable {
     TransactionCategory? category,
     DateTime? createdAt,
     DateTime? updatedAt,
+    double? limit,
   }) {
     return Transaction(
       id: id ?? this.id,
@@ -67,11 +73,12 @@ class Transaction extends Equatable {
       category: category ?? this.category,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
+      limit: limit ?? this.limit,
     );
   }
 
   @override
   String toString() =>
       // ignore: lines_longer_than_80_chars
-      'Transaction(id: $id, title: $title, value: $value, type: $type, category: $category, createdAt: $createdAt, updatedAt: $updatedAt)\n';
+      'Transaction(id: $id, title: $title, value: $value, type: $type, category: $category, createdAt: $createdAt, updatedAt: $updatedAt, limit: $limit)\n';
 }

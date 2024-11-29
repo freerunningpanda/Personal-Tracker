@@ -24,21 +24,6 @@ class TransactionsView extends StatelessWidget {
   /// [transactions] is the list of transactions.
   final List<Transaction> transactions;
 
-  void Function() _showUpdateDialog(
-    BuildContext context, {
-    required Transaction transaction,
-  }) =>
-      () {
-        context.read<FormCubit>().validateForm(isFormValid: true);
-
-        showDialog<TransactionDialog>(
-          context: context,
-          builder: (_) => TransactionDialog(
-            transaction: transaction,
-          ),
-        );
-      };
-
   void Function() _onDismissed(
     BuildContext context, {
     required Transaction transaction,
@@ -114,10 +99,14 @@ class TransactionsView extends StatelessWidget {
                     ),
                     trailing: InkWell(
                       onTap: transaction.id != null
-                          ? _showUpdateDialog(
-                              context,
-                              transaction: transaction,
-                            )
+                          ? () {
+                              showDialog<TransactionDialog>(
+                                context: context,
+                                builder: (_) => TransactionDialog(
+                                  transaction: transaction,
+                                ),
+                              );
+                            }
                           : null,
                       child: const Icon(Icons.edit),
                     ),

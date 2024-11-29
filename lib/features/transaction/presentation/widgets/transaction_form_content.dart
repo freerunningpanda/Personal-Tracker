@@ -49,12 +49,7 @@ class TransactionFormContent extends StatelessWidget {
               suffixIcon: const Icon(Icons.title),
             ),
             textInputAction: TextInputAction.next,
-            onChanged: (value) {
-              localCubit.validateForm(
-                isFormValid: formKey.currentState?.validate() ?? false,
-              );
-              titleFocusNode.requestFocus();
-            },
+            onChanged: (value) => titleFocusNode.requestFocus(),
             onSubmitted: (_) => valueFocusNode.requestFocus(),
             validator: (value) => value == null || value.isEmpty
                 ? context.tr.pleaseEnterATitle
@@ -65,12 +60,7 @@ class TransactionFormContent extends StatelessWidget {
             name: AppConstants.valueField,
             keyboardType: TextInputType.number,
             focusNode: valueFocusNode,
-            onChanged: (value) {
-              localCubit.validateForm(
-                isFormValid: formKey.currentState?.validate() ?? false,
-              );
-              valueFocusNode.requestFocus();
-            },
+            onChanged: (value) => valueFocusNode.requestFocus(),
             decoration: InputDecoration(
               labelText: context.tr.value,
               suffixIcon: const Icon(Icons.attach_money),
@@ -89,6 +79,26 @@ class TransactionFormContent extends StatelessWidget {
               labelText: context.tr.date,
               suffixIcon: const Icon(Icons.calendar_today),
             ),
+          ),
+          FormBuilderTextField(
+            initialValue: transaction?.limit != null
+                ? transaction!.limit!.toString()
+                : '',
+            name: AppConstants.limitField,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              labelText: context.tr.limit,
+              suffixIcon: const Icon(Icons.warning),
+            ),
+            validator: (value) {
+              final numValue = double.tryParse(value ?? '');
+              if (numValue != null) {
+                if (numValue < 0) {
+                  return 'Cannot be negative';
+                }
+              }
+              return null;
+            },
           ),
           TransactionDropdowns(
             transaction: transaction,

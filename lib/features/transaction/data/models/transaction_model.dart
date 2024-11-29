@@ -13,6 +13,7 @@ class TransactionModel extends Transaction {
     required super.category,
     super.createdAt,
     super.updatedAt,
+    super.limit,
   });
 
   /// [TransactionModel.fromDriftEntity] is a factory constructor.
@@ -27,6 +28,7 @@ class TransactionModel extends Transaction {
         category: entity.category,
         createdAt: entity.createdAt,
         updatedAt: entity.updatedAt,
+        limit: entity.limit,
       );
 
   /// [TransactionModel.fromUIEntity] is a factory constructor.
@@ -40,5 +42,6 @@ class TransactionModel extends Transaction {
         category: transaction.category,
         createdAt: transaction.createdAt,
         updatedAt: transaction.updatedAt,
+        limit: transaction.limit,
       );
 }

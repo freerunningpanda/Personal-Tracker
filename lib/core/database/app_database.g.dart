@@ -57,9 +57,14 @@ class $TransactionDriftEntityTable extends TransactionDriftEntity
   late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
       'updated_at', aliasedName, true,
       type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  static const VerificationMeta _limitMeta = const VerificationMeta('limit');
+  @override
+  late final GeneratedColumn<double> limit = GeneratedColumn<double>(
+      'limit', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
   @override
   List<GeneratedColumn> get $columns =>
-      [id, title, value, type, category, createdAt, updatedAt];
+      [id, title, value, type, category, createdAt, updatedAt, limit];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -96,6 +101,10 @@ class $TransactionDriftEntityTable extends TransactionDriftEntity
       context.handle(_updatedAtMeta,
           updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta));
     }
+    if (data.containsKey('limit')) {
+      context.handle(
+          _limitMeta, limit.isAcceptableOrUnknown(data['limit']!, _limitMeta));
+    }
     return context;
   }
 
@@ -122,6 +131,8 @@ class $TransactionDriftEntityTable extends TransactionDriftEntity
           .read(DriftSqlType.dateTime, data['${effectivePrefix}created_at'])!,
       updatedAt: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}updated_at']),
+      limit: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}limit']),
     );
   }
 
@@ -159,6 +170,9 @@ class TransactionDriftEntityData extends DataClass
 
   /// [updatedAt] is the date of the last update of the transaction.
   final DateTime? updatedAt;
+
+  /// [limit] is the limit of the transaction.
+  final double? limit;
   const TransactionDriftEntityData(
       {required this.id,
       required this.title,
@@ -166,7 +180,8 @@ class TransactionDriftEntityData extends DataClass
       required this.type,
       required this.category,
       required this.createdAt,
-      this.updatedAt});
+      this.updatedAt,
+      this.limit});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -185,6 +200,9 @@ class TransactionDriftEntityData extends DataClass
     if (!nullToAbsent || updatedAt != null) {
       map['updated_at'] = Variable<DateTime>(updatedAt);
     }
+    if (!nullToAbsent || limit != null) {
+      map['limit'] = Variable<double>(limit);
+    }
     return map;
   }
 
@@ -199,6 +217,8 @@ class TransactionDriftEntityData extends DataClass
       updatedAt: updatedAt == null && nullToAbsent
           ? const Value.absent()
           : Value(updatedAt),
+      limit:
+          limit == null && nullToAbsent ? const Value.absent() : Value(limit),
     );
   }
 
@@ -215,6 +235,7 @@ class TransactionDriftEntityData extends DataClass
           .fromJson(serializer.fromJson<String>(json['category'])),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
       updatedAt: serializer.fromJson<DateTime?>(json['updatedAt']),
+      limit: serializer.fromJson<double?>(json['limit']),
     );
   }
   @override
@@ -230,6 +251,7 @@ class TransactionDriftEntityData extends DataClass
           $TransactionDriftEntityTable.$convertercategory.toJson(category)),
       'createdAt': serializer.toJson<DateTime>(createdAt),
       'updatedAt': serializer.toJson<DateTime?>(updatedAt),
+      'limit': serializer.toJson<double?>(limit),
     };
   }
 
@@ -240,7 +262,8 @@ class TransactionDriftEntityData extends DataClass
           TransactionType? type,
           TransactionCategory? category,
           DateTime? createdAt,
-          Value<DateTime?> updatedAt = const Value.absent()}) =>
+          Value<DateTime?> updatedAt = const Value.absent(),
+          Value<double?> limit = const Value.absent()}) =>
       TransactionDriftEntityData(
         id: id ?? this.id,
         title: title ?? this.title,
@@ -249,6 +272,7 @@ class TransactionDriftEntityData extends DataClass
         category: category ?? this.category,
         createdAt: createdAt ?? this.createdAt,
         updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+        limit: limit.present ? limit.value : this.limit,
       );
   TransactionDriftEntityData copyWithCompanion(
       TransactionDriftEntityCompanion data) {
@@ -260,6 +284,7 @@ class TransactionDriftEntityData extends DataClass
       category: data.category.present ? data.category.value : this.category,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      limit: data.limit.present ? data.limit.value : this.limit,
     );
   }
 
@@ -272,14 +297,15 @@ class TransactionDriftEntityData extends DataClass
           ..write('type: $type, ')
           ..write('category: $category, ')
           ..write('createdAt: $createdAt, ')
-          ..write('updatedAt: $updatedAt')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('limit: $limit')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode =>
-      Object.hash(id, title, value, type, category, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+      id, title, value, type, category, createdAt, updatedAt, limit);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -290,7 +316,8 @@ class TransactionDriftEntityData extends DataClass
           other.type == this.type &&
           other.category == this.category &&
           other.createdAt == this.createdAt &&
-          other.updatedAt == this.updatedAt);
+          other.updatedAt == this.updatedAt &&
+          other.limit == this.limit);
 }
 
 class TransactionDriftEntityCompanion
@@ -302,6 +329,7 @@ class TransactionDriftEntityCompanion
   final Value<TransactionCategory> category;
   final Value<DateTime> createdAt;
   final Value<DateTime?> updatedAt;
+  final Value<double?> limit;
   const TransactionDriftEntityCompanion({
     this.id = const Value.absent(),
     this.title = const Value.absent(),
@@ -310,6 +338,7 @@ class TransactionDriftEntityCompanion
     this.category = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
+    this.limit = const Value.absent(),
   });
   TransactionDriftEntityCompanion.insert({
     this.id = const Value.absent(),
@@ -319,6 +348,7 @@ class TransactionDriftEntityCompanion
     required TransactionCategory category,
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
+    this.limit = const Value.absent(),
   })  : title = Value(title),
         value = Value(value),
         type = Value(type),
@@ -331,6 +361,7 @@ class TransactionDriftEntityCompanion
     Expression<String>? category,
     Expression<DateTime>? createdAt,
     Expression<DateTime>? updatedAt,
+    Expression<double>? limit,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -340,6 +371,7 @@ class TransactionDriftEntityCompanion
       if (category != null) 'category': category,
       if (createdAt != null) 'created_at': createdAt,
       if (updatedAt != null) 'updated_at': updatedAt,
+      if (limit != null) 'limit': limit,
     });
   }
 
@@ -350,7 +382,8 @@ class TransactionDriftEntityCompanion
       Value<TransactionType>? type,
       Value<TransactionCategory>? category,
       Value<DateTime>? createdAt,
-      Value<DateTime?>? updatedAt}) {
+      Value<DateTime?>? updatedAt,
+      Value<double?>? limit}) {
     return TransactionDriftEntityCompanion(
       id: id ?? this.id,
       title: title ?? this.title,
@@ -359,6 +392,7 @@ class TransactionDriftEntityCompanion
       category: category ?? this.category,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
+      limit: limit ?? this.limit,
     );
   }
 
@@ -389,6 +423,9 @@ class TransactionDriftEntityCompanion
     if (updatedAt.present) {
       map['updated_at'] = Variable<DateTime>(updatedAt.value);
     }
+    if (limit.present) {
+      map['limit'] = Variable<double>(limit.value);
+    }
     return map;
   }
 
@@ -401,7 +438,8 @@ class TransactionDriftEntityCompanion
           ..write('type: $type, ')
           ..write('category: $category, ')
           ..write('createdAt: $createdAt, ')
-          ..write('updatedAt: $updatedAt')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('limit: $limit')
           ..write(')'))
         .toString();
   }
@@ -428,6 +466,7 @@ typedef $$TransactionDriftEntityTableCreateCompanionBuilder
   required TransactionCategory category,
   Value<DateTime> createdAt,
   Value<DateTime?> updatedAt,
+  Value<double?> limit,
 });
 typedef $$TransactionDriftEntityTableUpdateCompanionBuilder
     = TransactionDriftEntityCompanion Function({
@@ -438,6 +477,7 @@ typedef $$TransactionDriftEntityTableUpdateCompanionBuilder
   Value<TransactionCategory> category,
   Value<DateTime> createdAt,
   Value<DateTime?> updatedAt,
+  Value<double?> limit,
 });
 
 class $$TransactionDriftEntityTableFilterComposer
@@ -474,6 +514,9 @@ class $$TransactionDriftEntityTableFilterComposer
 
   ColumnFilters<DateTime> get updatedAt => $composableBuilder(
       column: $table.updatedAt, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get limit => $composableBuilder(
+      column: $table.limit, builder: (column) => ColumnFilters(column));
 }
 
 class $$TransactionDriftEntityTableOrderingComposer
@@ -505,6 +548,9 @@ class $$TransactionDriftEntityTableOrderingComposer
 
   ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
       column: $table.updatedAt, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get limit => $composableBuilder(
+      column: $table.limit, builder: (column) => ColumnOrderings(column));
 }
 
 class $$TransactionDriftEntityTableAnnotationComposer
@@ -536,6 +582,9 @@ class $$TransactionDriftEntityTableAnnotationComposer
 
   GeneratedColumn<DateTime> get updatedAt =>
       $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<double> get limit =>
+      $composableBuilder(column: $table.limit, builder: (column) => column);
 }
 
 class $$TransactionDriftEntityTableTableManager extends RootTableManager<
@@ -576,6 +625,7 @@ class $$TransactionDriftEntityTableTableManager extends RootTableManager<
             Value<TransactionCategory> category = const Value.absent(),
             Value<DateTime> createdAt = const Value.absent(),
             Value<DateTime?> updatedAt = const Value.absent(),
+            Value<double?> limit = const Value.absent(),
           }) =>
               TransactionDriftEntityCompanion(
             id: id,
@@ -585,6 +635,7 @@ class $$TransactionDriftEntityTableTableManager extends RootTableManager<
             category: category,
             createdAt: createdAt,
             updatedAt: updatedAt,
+            limit: limit,
           ),
           createCompanionCallback: ({
             Value<int> id = const Value.absent(),
@@ -594,6 +645,7 @@ class $$TransactionDriftEntityTableTableManager extends RootTableManager<
             required TransactionCategory category,
             Value<DateTime> createdAt = const Value.absent(),
             Value<DateTime?> updatedAt = const Value.absent(),
+            Value<double?> limit = const Value.absent(),
           }) =>
               TransactionDriftEntityCompanion.insert(
             id: id,
@@ -603,6 +655,7 @@ class $$TransactionDriftEntityTableTableManager extends RootTableManager<
             category: category,
             createdAt: createdAt,
             updatedAt: updatedAt,
+            limit: limit,
           ),
           withReferenceMapper: (p0) => p0
               .map((e) => (e.readTable(table), BaseReferences(db, table, e)))

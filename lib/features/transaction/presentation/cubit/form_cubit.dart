@@ -19,15 +19,6 @@ class FormCubit extends Cubit<FormState> {
           ),
         );
 
-  /// [validateForm] method is used to validate the form.
-  void validateForm({required bool isFormValid}) {
-    emit(
-      state.copyWith(isFormValid: isFormValid),
-    );
-
-    log('Form is valid: $isFormValid');
-  }
-
   /// [setType] method is used to set the type of the transaction.
   void setType({
     TransactionType? type,

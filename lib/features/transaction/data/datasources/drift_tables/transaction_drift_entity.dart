@@ -24,4 +24,7 @@ class TransactionDriftEntity extends Table {
 
   /// [updatedAt] is the date of the last update of the transaction.
   DateTimeColumn get updatedAt => dateTime().nullable()();
+
+  /// [limit] is the limit of the transaction.
+  RealColumn get limit => real().nullable()();
 }

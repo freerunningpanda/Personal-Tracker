@@ -8,6 +8,9 @@ class AppConstants {
   /// [valueField] is the amount of the transaction.
   static const valueField = 'value';
 
+  /// [limitField] is the limit of the transaction.
+  static const limitField = 'limit';
+
   /// [dateTimeField] is the date and time of the transaction.
   static const dateTimeField = 'dateTime';
 
