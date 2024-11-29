@@ -11,7 +11,6 @@ import 'package:tracker/features/transaction/domain/usecases/delete_transaction.
 import 'package:tracker/features/transaction/domain/usecases/get_filtered_transactions.dart';
 import 'package:tracker/features/transaction/domain/usecases/get_transactions.dart';
 import 'package:tracker/features/transaction/domain/usecases/search_transactions.dart';
-import 'package:tracker/features/transaction/domain/usecases/update_transaction.dart';
 
 part 'transactions_event.dart';
 part 'transactions_state.dart';
@@ -129,11 +128,6 @@ class TransactionsBloc extends Bloc<TransactionsEvent, TransactionsState> {
 
     result.fold(
       onSuccess: (transactions) {
-        if (transactions.data?.isEmpty ?? true) {
-          emit(const TransactionsInitialState());
-
-          return;
-        }
         emit(
           TransactionsLoadedState(transactions.data ?? []),
         );

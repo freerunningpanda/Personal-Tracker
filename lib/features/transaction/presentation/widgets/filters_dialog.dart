@@ -30,54 +30,9 @@ class FiltersDialog extends StatelessWidget {
         content: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                top: AppConstants.commonSize16,
-              ),
-              child: Text(
-                context.tr.category,
-                style: theme.primaryTextTheme.bodyLarge?.copyWith(
-                  color: theme.appColors.textColors.mainColor,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                bottom: AppConstants.commonSize16,
-              ),
-              child: DropdownButton<TransactionCategory>(
-                isExpanded: true,
-                value: state.category ?? firstCategory,
-                items: TransactionCategory.values
-                    .map(
-                      (category) => DropdownMenuItem(
-                        value: category,
-                        child: Text(category.getName(context)),
-                      ),
-                    )
-                    .toList(),
-                onChanged: (category) =>
-                    bloc.add(SetFiltersEvent(category: category)),
-              ),
-            ),
-            Text(
-              context.tr.type,
-              style: theme.primaryTextTheme.bodyLarge?.copyWith(
-                color: theme.appColors.textColors.mainColor,
-              ),
-            ),
-            DropdownButton<TransactionType>(
-              isExpanded: true,
-              value: state.type ?? firstType,
-              items: TransactionType.values
-                  .map(
-                    (type) => DropdownMenuItem(
-                      value: type,
-                      child: Text(type.getName(context)),
-                    ),
-                  )
-                  .toList(),
-              onChanged: (type) => bloc.add(SetFiltersEvent(type: type)),
+            FiltersDropdown(
+              firstCategory: firstCategory,
+              firstType: firstType,
             ),
             FormBuilderDateTimePicker(
               name: AppConstants.filteredDateTimeField,
@@ -164,6 +119,78 @@ class FiltersDialog extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class FiltersDropdown extends StatelessWidget {
+  const FiltersDropdown({
+    super.key,
+    required this.firstCategory,
+    required this.firstType,
+  });
+
+  final TransactionCategory firstCategory;
+  final TransactionType firstType;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = context.theme;
+    final bloc = context.read<FiltersBloc>();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(
+            top: AppConstants.commonSize16,
+          ),
+          child: Text(
+            context.tr.category,
+            style: theme.primaryTextTheme.bodyLarge?.copyWith(
+              color: theme.appColors.textColors.mainColor,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+            bottom: AppConstants.commonSize16,
+          ),
+          child: DropdownButton<TransactionCategory>(
+            isExpanded: true,
+            value: bloc.state.category ?? firstCategory,
+            items: TransactionCategory.values
+                .map(
+                  (category) => DropdownMenuItem(
+                    value: category,
+                    child: Text(category.getName(context)),
+                  ),
+                )
+                .toList(),
+            onChanged: (category) =>
+                bloc.add(SetFiltersEvent(category: category)),
+          ),
+        ),
+        Text(
+          context.tr.type,
+          style: theme.primaryTextTheme.bodyLarge?.copyWith(
+            color: theme.appColors.textColors.mainColor,
+          ),
+        ),
+        DropdownButton<TransactionType>(
+          isExpanded: true,
+          value: bloc.state.type ?? firstType,
+          items: TransactionType.values
+              .map(
+                (type) => DropdownMenuItem(
+                  value: type,
+                  child: Text(type.getName(context)),
+                ),
+              )
+              .toList(),
+          onChanged: (type) => bloc.add(SetFiltersEvent(type: type)),
+        ),
+      ],
     );
   }
 }
