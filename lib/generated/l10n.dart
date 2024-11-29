@@ -440,6 +440,16 @@ class S {
       args: [],
     );
   }
+
+  /// `For all the time`
+  String get forAllTime {
+    return Intl.message(
+      'For all the time',
+      name: 'forAllTime',
+      desc: 'The label of the for all time text',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

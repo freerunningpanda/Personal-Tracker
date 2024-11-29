@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "exceededTheLimit": m0,
         "expense": MessageLookupByLibrary.simpleMessage("Затраты"),
         "food": MessageLookupByLibrary.simpleMessage("Еда"),
+        "forAllTime": MessageLookupByLibrary.simpleMessage("За всё время"),
         "fromLess": MessageLookupByLibrary.simpleMessage("от меньшего"),
         "fromMore": MessageLookupByLibrary.simpleMessage("от большего"),
         "health": MessageLookupByLibrary.simpleMessage("Здоровье"),

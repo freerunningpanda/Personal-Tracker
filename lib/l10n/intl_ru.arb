@@ -199,5 +199,10 @@
   "@incomesAndExpensesByCategories": {
     "description": "Текст 'Доходы и расходы по категориям'",
     "type": "text"
+  },
+  "forAllTime": "За всё время",
+  "@forAllTime": {
+    "description": "Текст 'За всё время'",
+    "type": "text"
   }
 }

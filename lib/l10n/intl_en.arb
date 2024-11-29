@@ -199,5 +199,10 @@
   "@incomesAndExpensesByCategories": {
     "description": "The label of the incomes and expenses by categories diagram",
     "type": "text"
+  },
+  "forAllTime": "For all the time",
+  "@forAllTime": {
+    "description": "The label of the for all time text",
+    "type": "text"
   }
 }

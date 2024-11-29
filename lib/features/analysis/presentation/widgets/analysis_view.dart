@@ -18,6 +18,7 @@ class AnalysisView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
+
     return BlocBuilder<AnalysisBloc, AnalysisState>(
       builder: (_, state) => switch (state) {
         AnalysisInitial _ => Column(
@@ -47,12 +48,23 @@ class AnalysisView extends StatelessWidget {
                   padding: const EdgeInsets.only(
                     bottom: AppConstants.commonSize24,
                   ),
-                  child: Text(
-                    context.tr.incomeDiagram,
-                    style: theme.primaryTextTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: theme.appColors.textColors.mainColor,
-                    ),
+                  child: Column(
+                    children: [
+                      Text(
+                        context.tr.incomeDiagram,
+                        textAlign: TextAlign.center,
+                        style: theme.primaryTextTheme.headlineMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: theme.appColors.textColors.mainColor,
+                        ),
+                      ),
+                      Text(
+                        context.tr.forAllTime,
+                        style: theme.primaryTextTheme.bodyLarge?.copyWith(
+                          color: theme.appColors.textColors.secondaryColor,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Padding(
@@ -60,7 +72,7 @@ class AnalysisView extends StatelessWidget {
                     bottom: AppConstants.commonSize24,
                   ),
                   child: SizedBox(
-                    height: 300,
+                    height: MediaQuery.of(context).size.height / 2.6,
                     child: PieChart(
                       PieChartData(
                         sections: _getSections(
