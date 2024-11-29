@@ -54,10 +54,36 @@ class AnalysisView extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(
-                  state.analysisByCategory
-                      .map((category) => category.total)
-                      .join(', '),
+                Column(
+                  children: state.analysisByCategory.map(
+                    (category) {
+                      if (category.total == 0) {
+                        return const SizedBox.shrink();
+                      }
+
+                      return ListTile(
+                        leading: CircleAvatar(
+                          backgroundColor: category.category.getColor(context),
+                          radius: 20,
+                        ),
+                        title: Text(
+                          category.category.toString().split('.').last,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        trailing: Text(
+                          '${category.total} \n',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: category.total < 0
+                                ? theme.appColors.mainColors.redColor
+                                : theme.appColors.mainColors.greenColor,
+                          ),
+                        ),
+                      );
+                    },
+                  ).toList(),
                 ),
                 const SizedBox(
                   height: AppConstants.commonSize24,
