@@ -420,6 +420,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Incomes diagram`
+  String get incomeDiagram {
+    return Intl.message(
+      'Incomes diagram',
+      name: 'incomeDiagram',
+      desc: 'The label of the incomes diagram',
+      args: [],
+    );
+  }
+
+  /// `Incomes and expenses by categories diagram`
+  String get incomesAndExpensesByCategories {
+    return Intl.message(
+      'Incomes and expenses by categories diagram',
+      name: 'incomesAndExpensesByCategories',
+      desc: 'The label of the incomes and expenses by categories diagram',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

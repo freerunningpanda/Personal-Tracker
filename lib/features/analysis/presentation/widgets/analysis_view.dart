@@ -48,7 +48,7 @@ class AnalysisView extends StatelessWidget {
                     bottom: AppConstants.commonSize24,
                   ),
                   child: Text(
-                    'Диаграмма доходов',
+                    context.tr.incomeDiagram,
                     style: theme.primaryTextTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: theme.appColors.textColors.mainColor,
@@ -76,7 +76,7 @@ class AnalysisView extends StatelessWidget {
                     horizontal: AppConstants.commonSize24,
                   ),
                   child: Text(
-                    'Доходы и расходы по категориям',
+                    context.tr.incomesAndExpensesByCategories,
                     textAlign: TextAlign.center,
                     style: theme.primaryTextTheme.headlineSmall?.copyWith(
                       color: theme.appColors.textColors.mainColor,

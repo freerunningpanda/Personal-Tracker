@@ -189,5 +189,15 @@
   "@amount": {
     "description": "The label of the amount input",
     "type": "text"
+  },
+  "incomeDiagram": "Incomes diagram",
+  "@incomeDiagram": {
+    "description": "The label of the incomes diagram",
+    "type": "text"
+  },
+  "incomesAndExpensesByCategories": "Incomes and expenses by categories diagram",
+  "@incomesAndExpensesByCategories": {
+    "description": "The label of the incomes and expenses by categories diagram",
+    "type": "text"
   }
 }

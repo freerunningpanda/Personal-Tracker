@@ -49,6 +49,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "fromMore": MessageLookupByLibrary.simpleMessage("from more"),
         "health": MessageLookupByLibrary.simpleMessage("Health"),
         "income": MessageLookupByLibrary.simpleMessage("Income"),
+        "incomeDiagram":
+            MessageLookupByLibrary.simpleMessage("Incomes diagram"),
+        "incomesAndExpensesByCategories": MessageLookupByLibrary.simpleMessage(
+            "Incomes and expenses by categories diagram"),
         "limit": MessageLookupByLibrary.simpleMessage("Limit"),
         "noTransactionsYet":
             MessageLookupByLibrary.simpleMessage("No transactions yet"),

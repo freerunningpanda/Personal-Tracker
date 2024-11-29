@@ -47,6 +47,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "fromMore": MessageLookupByLibrary.simpleMessage("от большего"),
         "health": MessageLookupByLibrary.simpleMessage("Здоровье"),
         "income": MessageLookupByLibrary.simpleMessage("Доходы"),
+        "incomeDiagram":
+            MessageLookupByLibrary.simpleMessage("Диаграмма доходов"),
+        "incomesAndExpensesByCategories": MessageLookupByLibrary.simpleMessage(
+            "Доходы и расходы по категориям"),
         "limit": MessageLookupByLibrary.simpleMessage("Лимит"),
         "noTransactionsYet":
             MessageLookupByLibrary.simpleMessage("Пока нет транзакций"),

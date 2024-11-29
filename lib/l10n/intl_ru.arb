@@ -189,5 +189,15 @@
   "@amount": {
     "description": "Текст 'Сумма'",
     "type": "text"
+  },
+  "incomeDiagram": "Диаграмма доходов",
+  "@incomeDiagram": {
+    "description": "Текст 'Диаграмма доходов'",
+    "type": "text"
+  },
+  "incomesAndExpensesByCategories": "Доходы и расходы по категориям",
+  "@incomesAndExpensesByCategories": {
+    "description": "Текст 'Доходы и расходы по категориям'",
+    "type": "text"
   }
 }
